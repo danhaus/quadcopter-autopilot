@@ -1,0 +1,86 @@
+Entering takeoff at time: 0
+Time: 0 Distance reading: 7.03620910645 Throttle: 1352.5
+Time: 0.05 Distance reading: 7.90762901306 Throttle: 1355.0
+Time: 0.1 Distance reading: 7.44557380676 Throttle: 1357.5
+Time: 0.15 Distance reading: 7.51447677612 Throttle: 1360.0
+Time: 0.2 Distance reading: 7.10916519165 Throttle: 1362.5
+Time: 0.25 Distance reading: 7.55095481873 Throttle: 1365.0
+Time: 0.3 Distance reading: 7.15374946594 Throttle: 1367.5
+Time: 0.35 Distance reading: 7.12132453918 Throttle: 1370.0
+Time: 0.4 Distance reading: 7.10511207581 Throttle: 1372.5
+Time: 0.45 Distance reading: 7.12537765503 Throttle: 1375.0
+Time: 0.5 Distance reading: 7.08889961243 Throttle: 1377.5
+Time: 0.55 Distance reading: 7.07268714905 Throttle: 1380.0
+Time: 0.6 Distance reading: 7.10916519165 Throttle: 1382.5
+Time: 0.65 Distance reading: 7.08889961243 Throttle: 1385.0
+Time: 0.7 Distance reading: 7.13753700256 Throttle: 1387.5
+Time: 0.75 Distance reading: 7.08889961243 Throttle: 1390.0
+Time: 0.8 Distance reading: 7.07268714905 Throttle: 1392.5
+Time: 0.85 Distance reading: 7.07268714905 Throttle: 1395.0
+Time: 0.9 Distance reading: 7.12132453918 Throttle: 1397.5
+Time: 0.95 Distance reading: 7.14159011841 Throttle: 1400.0
+Time: 1.0 Distance reading: 7.15780258179 Throttle: 1402.5
+Time: 1.05 Distance reading: 7.5671672821 Throttle: 1405.0
+Time: 1.1 Distance reading: 7.10916519165 Throttle: 1407.5
+Time: 1.15 Distance reading: 7.23886489868 Throttle: 1410.0
+Time: 1.2 Distance reading: 7.13753700256 Throttle: 1412.5
+Time: 1.25 Distance reading: 7.19022750854 Throttle: 1415.0
+Time: 1.3 Distance reading: 7.61580467224 Throttle: 1417.5
+Time: 1.35 Distance reading: 7.58337974548 Throttle: 1420.0
+Time: 1.4 Distance reading: 7.61580467224 Throttle: 1422.5
+Entering hover at time: 1.45
+Time: 1.45 Distance reading: 7.9927444458 Target Distance: 7.65 Throttle adjustment: 0 Throttle: 1422.5
+Time: 1.5 Distance reading: 8.09407234192 Target Distance: 7.8 Throttle adjustment: 0 Throttle: 1422.5
+Time: 1.55 Distance reading: 7.25913047791 Target Distance: 7.95 Throttle adjustment: 0 Throttle: 1422.5
+Time: 1.6 Distance reading: 7.61580467224 Target Distance: 8.1 Throttle adjustment: 0 Throttle: 1422.5
+Time: 1.65 Distance reading: 7.2226524353 Target Distance: 8.25 Throttle adjustment: 0 Throttle: 1422.5
+Time: 1.7 Distance reading: 7.21049308777 Target Distance: 8.4 Throttle adjustment: 0 Throttle: 1422.5
+Time: 1.75 Distance reading: 7.59959220886 Target Distance: 8.55 Throttle adjustment: 0 Throttle: 1422.5
+Time: 1.8 Distance reading: 7.2226524353 Target Distance: 8.7 Throttle adjustment: 1 Throttle: 1423.5
+Time: 1.85 Distance reading: 7.61580467224 Target Distance: 8.85 Throttle adjustment: 0 Throttle: 1423.5
+Time: 1.9 Distance reading: 7.70092010498 Target Distance: 9.0 Throttle adjustment: 1 Throttle: 1424.5
+Time: 1.95 Distance reading: 8.02516937256 Target Distance: 9.15 Throttle adjustment: 0 Throttle: 1424.5
+Time: 2.0 Distance reading: 7.6847076416 Target Distance: 9.3 Throttle adjustment: 1 Throttle: 1425.5
+Time: 2.05 Distance reading: 7.66849517822 Target Distance: 9.45 Throttle adjustment: 1 Throttle: 1426.5
+Time: 2.1 Distance reading: 8.09001922607 Target Distance: 9.6 Throttle adjustment: 1 Throttle: 1427.5
+Time: 2.15 Distance reading: 7.65228271484 Target Distance: 9.75 Throttle adjustment: 1 Throttle: 1428.5
+Time: 2.2 Distance reading: 7.71713256836 Target Distance: 9.9 Throttle adjustment: 1 Throttle: 1429.5
+Time: 2.25 Distance reading: 7.34424591064 Target Distance: 10.05 Throttle adjustment: 2 Throttle: 1431.5
+Time: 2.3 Distance reading: 7.6847076416 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1432.5
+Time: 2.35 Distance reading: 7.6847076416 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1433.5
+Time: 2.4 Distance reading: 7.25913047791 Target Distance: 10.05 Throttle adjustment: 2 Throttle: 1435.5
+Time: 2.45 Distance reading: 7.6847076416 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1436.5
+Time: 2.5 Distance reading: 7.65228271484 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1437.5
+Time: 2.55 Distance reading: 7.6847076416 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1438.5
+Time: 2.6 Distance reading: 7.27534294128 Target Distance: 10.05 Throttle adjustment: 2 Throttle: 1440.5
+Time: 2.65 Distance reading: 7.73334503174 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1441.5
+Time: 2.7 Distance reading: 8.09407234192 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1442.5
+Time: 2.75 Distance reading: 7.74955749512 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1443.5
+Time: 2.8 Distance reading: 7.71713256836 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1444.5
+Time: 2.85 Distance reading: 7.7211856842 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1445.5
+Time: 2.9 Distance reading: 7.75361061096 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1446.5
+Time: 2.95 Distance reading: 7.7657699585 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1447.5
+Time: 3.0 Distance reading: 7.71713256836 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1448.5
+Time: 3.05 Distance reading: 7.73334503174 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1449.5
+Time: 3.1 Distance reading: 7.75361061096 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1450.5
+Time: 3.15 Distance reading: 7.32803344727 Target Distance: 10.05 Throttle adjustment: 2 Throttle: 1452.5
+Time: 3.2 Distance reading: 8.1467628479 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1453.5
+Time: 3.25 Distance reading: 7.73334503174 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1454.5
+Time: 3.3 Distance reading: 7.7211856842 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1455.5
+Time: 3.35 Distance reading: 7.34424591064 Target Distance: 10.05 Throttle adjustment: 2 Throttle: 1457.5
+Time: 3.4 Distance reading: 7.73334503174 Target Distance: 10.05 Throttle adjustment: 1 Throttle: 1458.5
+Entering landing at time: 3.45
+Time: 3.45 Distance reading: 7.73334503174 Throttle: 1458.5
+Time: 3.5 Distance reading: 7.81846046448 Throttle: 1457.0
+Time: 3.55 Distance reading: 7.76982307434 Throttle: 1455.5
+Time: 3.6 Distance reading: 7.8022480011 Throttle: 1454.0
+Time: 3.65 Distance reading: 7.34424591064 Throttle: 1452.5
+Time: 3.7 Distance reading: 7.74955749512 Throttle: 1451.0
+Time: 3.75 Distance reading: 7.75361061096 Throttle: 1449.5
+Time: 3.8 Distance reading: 7.78603553772 Throttle: 1448.0
+Time: 3.85 Distance reading: 8.15892219543 Throttle: 1446.5
+Time: 3.9 Distance reading: 7.27534294128 Throttle: 1445.0
+Time: 3.95 Distance reading: 7.65228271484 Throttle: 1443.5
+Time: 4.0 Distance reading: 7.36045837402 Throttle: 1442.0
+Time: 4.05 Distance reading: 7.25913047791 Throttle: 1440.5
+Time: 4.1 Distance reading: 7.27534294128 Throttle: 1439.0

@@ -1,0 +1,5 @@
+Install Ubuntu Mate to Raspberry Pi on Mac
+https://www.macworld.co.uk/how-to/mac/how-to-set-up-raspberry-pi-3-with-mac-3637490/
+
+Install ROS Kinetic
+http://wiki.ros.org/kinetic/Installation/Ubuntu

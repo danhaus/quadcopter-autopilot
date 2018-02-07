@@ -1,0 +1,8 @@
+prefix=/home/pi/propelled_cow/install
+
+Name: propelled_cow
+Description: Description of propelled_cow
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/pi/propelled_cow/install/lib 
+Requires: 

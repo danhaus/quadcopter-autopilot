@@ -1,0 +1,2 @@
+propelled_cow
+-DCATKIN_DEVEL_PREFIX=/home/pi/propelled_cow/devel -DCMAKE_INSTALL_PREFIX=/home/pi/propelled_cow/install -G Unix Makefiles

@@ -4,16 +4,16 @@ import time
 
 class HCSR04 (object):
     def __init__(self):
-    #GPIO Mode (BOARD / BCM)
-    GPIO.setmode(GPIO.BCM)
-     
-    #set GPIO Pins
-    self.GPIO_TRIGGER = 18
-    self.GPIO_ECHO = 24
-     
-    #set GPIO direction (IN / OUT)
-    GPIO.setup(self.GPIO_TRIGGER, GPIO.OUT)
-    GPIO.setup(self.GPIO_ECHO, GPIO.IN)
+        #GPIO Mode (BOARD / BCM)
+        GPIO.setmode(GPIO.BCM)
+         
+        #set GPIO Pins
+        self.GPIO_TRIGGER = 18
+        self.GPIO_ECHO = 24
+         
+        #set GPIO direction (IN / OUT)
+        GPIO.setup(self.GPIO_TRIGGER, GPIO.OUT)
+        GPIO.setup(self.GPIO_ECHO, GPIO.IN)
  
     def distance(self):
         # set Trigger to HIGH
@@ -44,8 +44,9 @@ class HCSR04 (object):
  
 if __name__ == '__main__':
     try:
+        ultrasonic = HCSR04()
         while True:
-            dist = self.distance()
+            dist = ultrasonic.distance()
             print ("Measured Distance = %.1f cm" % dist)
             time.sleep(1)
  

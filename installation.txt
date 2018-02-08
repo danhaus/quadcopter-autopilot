@@ -3,3 +3,6 @@ https://www.macworld.co.uk/how-to/mac/how-to-set-up-raspberry-pi-3-with-mac-3637
 
 Install ROS Kinetic
 http://wiki.ros.org/kinetic/Installation/Ubuntu
+
+Setting up rsub (using Sublime Text over ssh)
+http://www.knight-of-pi.org/even-better-sublime-text-3-over-ssh-on-a-raspberry-pi-with-rsub/

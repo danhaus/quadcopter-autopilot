@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "propelled_cow")
 set(propelled_cow_VERSION "0.0.0")
-set(propelled_cow_MAINTAINER "pi <pi@todo.todo>")
+set(propelled_cow_MAINTAINER "Daniel Hausner <dh4n16@soton.ac.uk>")
 set(propelled_cow_PACKAGE_FORMAT "2")
 set(propelled_cow_BUILD_DEPENDS "roscpp" "rospy" "std_msgs")
 set(propelled_cow_BUILD_EXPORT_DEPENDS "roscpp" "rospy" "std_msgs")

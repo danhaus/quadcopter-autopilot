@@ -7,9 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/pi/propelled_cow/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/pi/propelled_cow/devel/lib:$LD_LIBRARY_PATH"
 export PWD="/home/pi/propelled_cow/build"
-export PYTHONPATH="/home/pi/catkin_ws/devel/lib/python2.7/dist-packages:$PYTHONPATH"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/pi/propelled_cow/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/pi/propelled_cow/src:$ROS_PACKAGE_PATH"

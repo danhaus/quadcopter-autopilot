@@ -40,7 +40,7 @@ import rospy
 import os
 import sys
 
-from propelled_cow.hcsr04 import HCSR04
+import propelled_cow.hcsr04
 
 from std_msgs.msg import String
 # from propelled_cow.ultrasonic_hc_sr04 import HCSR04

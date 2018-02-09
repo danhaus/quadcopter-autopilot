@@ -15,7 +15,7 @@ class HCSR04 (object):
         GPIO.setup(self.GPIO_TRIGGER, GPIO.OUT)
         GPIO.setup(self.GPIO_ECHO, GPIO.IN)
  
-    def distance(self):
+    def getDistance(self):
         # set Trigger to HIGH
         GPIO.output(self.GPIO_TRIGGER, True)
      
@@ -38,16 +38,16 @@ class HCSR04 (object):
         TimeElapsed = StopTime - StartTime
         # multiply with the sonic speed (34300 cm/s)
         # and divide by 2, because there and back
-        distance = (TimeElapsed * 34300) / 2
+        getDistance = (TimeElapsed * 34300) / 2
      
-        return distance
+        return getDistance
  
 if __name__ == '__main__':
     try:
         ultrasonic = HCSR04()
         while True:
-            dist = ultrasonic.distance()
-            print ("Measured Distance = %.1f cm" % dist)
+            dist = ultrasonic.getDistance()
+            print ("Measured getDistance = %.1f cm" % dist)
             time.sleep(1)
  
         # Reset by pressing CTRL + C

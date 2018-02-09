@@ -38,7 +38,7 @@
 
 import rospy
 from std_msgs.msg import String
-from propelled_cow.ultrasonic import HCSR04
+from propelled_cow.ultrasonic_hc_sr04 import HCSR04
 
 def talker():
     ultrasonic = HCSR04()

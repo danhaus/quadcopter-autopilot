@@ -1,0 +1,6 @@
+set(propelled_cow_SETUP_PY_VERSION "0.0.0")
+set(propelled_cow_SETUP_PY_SCRIPTS "")
+set(propelled_cow_SETUP_PY_PACKAGES "propelled_cow")
+set(propelled_cow_SETUP_PY_PACKAGE_DIRS "src/propelled_cow")
+set(propelled_cow_SETUP_PY_MODULES "")
+set(propelled_cow_SETUP_PY_MODULE_DIRS "")

@@ -40,10 +40,7 @@ import rospy
 import os
 import sys
 
-root = os.path.dirname((os.path.abspath(__file__)))
-sys.path.append(root + '/src/propelled_cow')
-
-from ultrasonic_hc_sr04 import HCSR04 # noqa: E402
+from propelled_cow.hcsr04 import HCSR04
 
 from std_msgs.msg import String
 # from propelled_cow.ultrasonic_hc_sr04 import HCSR04

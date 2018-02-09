@@ -37,8 +37,14 @@
 ## to the 'chatter' topic
 
 import rospy
+
+root = os.path.dirname((os.path.abspath(__file__)))
+sys.path.append(root + '/src')
+
+import propelled_cow # noqa: E402
+
 from std_msgs.msg import String
-from propelled_cow.ultrasonic_hc_sr04 import HCSR04
+# from propelled_cow.ultrasonic_hc_sr04 import HCSR04
 
 def talker():
     ultrasonic = HCSR04()

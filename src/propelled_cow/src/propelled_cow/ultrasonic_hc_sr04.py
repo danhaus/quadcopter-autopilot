@@ -3,13 +3,14 @@ import RPi.GPIO as GPIO
 import time
 
 class HCSR04 (object):
-    def __init__(self):
+
+    def __init__(self, trigger=18, echo=24):
         #GPIO Mode (BOARD / BCM)
         GPIO.setmode(GPIO.BCM)
          
         #set GPIO Pins
-        self.GPIO_TRIGGER = 18
-        self.GPIO_ECHO = 24
+        self.GPIO_TRIGGER = trigger
+        self.GPIO_ECHO = echo
          
         #set GPIO direction (IN / OUT)
         GPIO.setup(self.GPIO_TRIGGER, GPIO.OUT)
@@ -38,13 +39,13 @@ class HCSR04 (object):
         TimeElapsed = StopTime - StartTime
         # multiply with the sonic speed (34300 cm/s)
         # and divide by 2, because there and back
-        getDistance = (TimeElapsed * 34300) / 2
+        distance = (TimeElapsed * 34300) / 2
      
-        return getDistance
+        return distance
  
 if __name__ == '__main__':
     try:
-        ultrasonic = HCSR04()
+        ultrasonic = HCSR04(18, 24)
         while True:
             dist = ultrasonic.getDistance()
             print ("Measured getDistance = %.1f cm" % dist)

@@ -41,6 +41,7 @@ class LSM303(object):
         return (accel, mag)
 
     def set_mag_gain(self,gain=self.LSM303_MAGGAIN_1_3):
+        
         # Gain settings for set_mag_gain()
         self.LSM303_MAGGAIN_1_3 = 0x20 # +/- 1.3
         self.LSM303_MAGGAIN_1_9 = 0x40 # +/- 1.9
@@ -49,7 +50,7 @@ class LSM303(object):
         self.LSM303_MAGGAIN_4_7 = 0xA0 # +/- 4.7
         self.LSM303_MAGGAIN_5_6 = 0xC0 # +/- 5.6
         self.LSM303_MAGGAIN_8_1 = 0xE0 # +/- 8.1
-        
+
         self._mag.write8(self.LSM303_REGISTER_MAG_CRB_REG_M, gain)
 
 if __name__ == '__main__':

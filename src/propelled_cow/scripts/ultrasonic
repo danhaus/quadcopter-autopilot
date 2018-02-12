@@ -42,18 +42,18 @@ import sys
 
 from propelled_cow.hcsr04 import HCSR04
 
-from std_msgs.msg import String
+from std_msgs.msg import Int16
 import RPi.GPIO as GPIO
 # from propelled_cow.ultrasonic_hc_sr04 import HCSR04
 
 def talker():
     ultrasonic = HCSR04()
-    pub = rospy.Publisher('ultrasonic', String, queue_size=10)
+    pub = rospy.Publisher('ultrasonic', Int16, queue_size=10)
     rospy.init_node('hs_sro4', anonymous=True)
     rate = rospy.Rate(1) # 1hz
     while not rospy.is_shutdown():
         # hello_str = "hello world %s" % rospy.get_time()
-        msg = str(ultrasonic.getDistance())
+        msg = int16(ultrasonic.getDistance())
         rospy.loginfo(msg)
         pub.publish(msg)
         rate.sleep()

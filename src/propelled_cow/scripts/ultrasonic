@@ -50,10 +50,10 @@ def talker():
     ultrasonic = HCSR04()
     pub = rospy.Publisher('ultrasonic', Int16, queue_size=10)
     rospy.init_node('hs_sro4', anonymous=True)
-    rate = rospy.Rate(1) # 1hz
+    rate = rospy.Rate(5) # Hz
     while not rospy.is_shutdown():
         # hello_str = "hello world %s" % rospy.get_time()
-        msg = int16(ultrasonic.getDistance())
+        msg = int(ultrasonic.getDistance())
         rospy.loginfo(msg)
         pub.publish(msg)
         rate.sleep()

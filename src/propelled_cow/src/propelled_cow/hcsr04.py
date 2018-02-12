@@ -42,6 +42,9 @@ class HCSR04 (object):
         distance = (TimeElapsed * 34300) / 2
      
         return distance
+
+    def cleanupPins(self):
+        GPIO.cleanup()
  
 if __name__ == '__main__':
     try:

@@ -2,4 +2,4 @@
 source_root_dir = "/home/pi/propelled_cow/src"
 whitelisted_packages = "".split(';') if "" != "" else []
 blacklisted_packages = "".split(';') if "" != "" else []
-underlay_workspaces = "/home/pi/propelled_cow/devel;/home/pi/catkin_ws/devel;/opt/ros/kinetic".split(';') if "/home/pi/propelled_cow/devel;/home/pi/catkin_ws/devel;/opt/ros/kinetic" != "" else []
+underlay_workspaces = "/opt/ros/kinetic".split(';') if "/opt/ros/kinetic" != "" else []

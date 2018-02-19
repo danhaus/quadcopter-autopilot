@@ -49,7 +49,8 @@ from geometry_msgs.msg import Vector3
 
 def talker():
     accelerometer = LSM303()
-    pub = rospy.Publisher('accelerometer', Vector3, queue_size=10)
+    pub_accel = rospy.Publisher('accelerometer', Vector3, queue_size=10)
+    pub_mag = rospy.Publisher('accelerometer', Vector3, queue_size=10)
     rospy.init_node('accelerometer', anonymous=True)                      #node name here
     rate = rospy.Rate(200) # Hz
     while not rospy.is_shutdown():
@@ -61,8 +62,12 @@ def talker():
         mx, my, mz = mag
         magv = Vector3(mx, my, mz)
 
-        rospy.loginfo(accelv, magv)
-        pub.publish(accelv, magv)
+        rospy.loginfo(accelv)
+        rospy.loginfo(magv)
+
+        pub_accel.publish(accelv)
+        pub_mag.publish(magv)
+        
         rate.sleep()
 
 if __name__ == '__main__':

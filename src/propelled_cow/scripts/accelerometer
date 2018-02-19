@@ -42,7 +42,7 @@ import rospy
 
 #import libraries from accel code
 import Adafruit_LSM303
-import struct
+import struct                                                               #do I need this?
 
 from geometry_msgs.msg import Vector3 #what datatype to use for accel/mag
 

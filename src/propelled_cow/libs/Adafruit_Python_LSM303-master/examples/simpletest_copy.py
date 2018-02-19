@@ -19,7 +19,7 @@ print('Printing accelerometer & magnetometer X, Y, Z axis values, press Ctrl-C t
 while True:
     # Read the X, Y, Z axis acceleration values and print them.
     accel, mag = lsm303.read()
-    print('accel type: {}'.format(type(accel)))
+    print('accel type: {}'.format(type(accel[0])))
     # Grab the X, Y, Z components from the reading and print them out.
     accel_x, accel_y, accel_z = accel
     mag_x, mag_z, mag_y = mag

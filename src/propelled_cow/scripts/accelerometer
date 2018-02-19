@@ -41,13 +41,14 @@ import rospy
 #import sys
 
 #import libraries from accel code
-import Adafruit_LSM303
+# import Adafruit_LSM303
+from propelled_cow.LSM303 import LSM303
 import struct                                                               #may not be needed
 
 from geometry_msgs.msg import Vector3
 
 def talker():
-    accelerometer = Adafruit_LSM303.LSM303()
+    accelerometer = LSM303()
     pub = rospy.Publisher('accelerometer', Vector3, queue_size=10)
     rospy.init_node('accelerometer', anonymous=True)                      #node name here
     rate = rospy.Rate(5) # Hz

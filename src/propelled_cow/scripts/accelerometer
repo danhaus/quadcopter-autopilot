@@ -43,15 +43,15 @@ import rospy
 #import libraries from accel code
 # import Adafruit_LSM303
 from propelled_cow.LSM303 import LSM303
-import struct                                                               #may not be needed
+import struct                                    
 
 from geometry_msgs.msg import Vector3
 
 def talker():
     accelerometer = LSM303()
     pub_accel = rospy.Publisher('accelerometer', Vector3, queue_size=10)
-    pub_mag = rospy.Publisher('accelerometer', Vector3, queue_size=10)
-    rospy.init_node('accelerometer', anonymous=True)                      #node name here
+    pub_mag = rospy.Publisher('magnetometer', Vector3, queue_size=10)
+    rospy.init_node('accelerometer', anonymous=True)
     rate = rospy.Rate(200) # Hz
     while not rospy.is_shutdown():
         accel, mag = accelerometer.read()
@@ -66,8 +66,8 @@ def talker():
         rospy.loginfo(magv)
 
         pub_accel.publish(accelv)
-        pub_mag.publish(magv)
-        
+        pub_mag.publish(magv)                                                               #is mag being published???
+
         rate.sleep()
 
 if __name__ == '__main__':

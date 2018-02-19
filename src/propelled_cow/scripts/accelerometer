@@ -51,7 +51,7 @@ def talker():
     accelerometer = LSM303()
     pub = rospy.Publisher('accelerometer', Vector3, queue_size=10)
     rospy.init_node('accelerometer', anonymous=True)                      #node name here
-    rate = rospy.Rate(5) # Hz
+    rate = rospy.Rate(1000) # Hz
     while not rospy.is_shutdown():
         accel, mag = accelerometer.read()
         x, y ,z = accel

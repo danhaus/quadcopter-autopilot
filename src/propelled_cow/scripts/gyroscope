@@ -15,7 +15,7 @@ def talker():
         gyro = gyroscope.read()
 
         gx, gy ,gz = gyro
-        gyrov = Vector3(ax, ay, az)
+        gyrov = Vector3(gx, gy, gz)
 
         rospy.loginfo(gyrov)
         pub.publish(gyrov)

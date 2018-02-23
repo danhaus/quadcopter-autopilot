@@ -20,6 +20,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/pi/propelled_cow/devel/include"
   "/opt/ros/kinetic/include"
   "/usr/include/eigen3"
+  "/home/pi/propelled_cow/src/mavros/mavros_msgs/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )
 

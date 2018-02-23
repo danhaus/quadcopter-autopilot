@@ -1,2 +1,2 @@
-propelled_cow:ros-multiwii
+mavros/libmavconn:mavros/mavros:mavros/mavros_extras:mavros/mavros_msgs:mavros/test_mavros:propelled_cow:ros-multiwii
 -DCATKIN_DEVEL_PREFIX=/home/pi/propelled_cow/devel -DCMAKE_INSTALL_PREFIX=/home/pi/propelled_cow/install -G Unix Makefiles

@@ -117,13 +117,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/pi/propelled_cow/build/gtest/cmake_install.cmake")
-  include("/home/pi/propelled_cow/build/mavros/libmavconn/cmake_install.cmake")
-  include("/home/pi/propelled_cow/build/mavros/mavros_msgs/cmake_install.cmake")
   include("/home/pi/propelled_cow/build/propelled_cow/cmake_install.cmake")
-  include("/home/pi/propelled_cow/build/ros-multiwii/cmake_install.cmake")
-  include("/home/pi/propelled_cow/build/mavros/mavros/cmake_install.cmake")
-  include("/home/pi/propelled_cow/build/mavros/mavros_extras/cmake_install.cmake")
-  include("/home/pi/propelled_cow/build/mavros/test_mavros/cmake_install.cmake")
 
 endif()
 

@@ -216,6 +216,9 @@ LSB_RELEASE_EXECUTABLE:FILEPATH=/usr/bin/lsb_release
 //Path to a program.
 NOSETESTS:FILEPATH=/usr/bin/nosetests-2.7
 
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
+
 //Path to a program.
 PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python
 
@@ -252,6 +255,33 @@ catkin_DIR:PATH=/opt/ros/kinetic/share/catkin/cmake
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/kinetic/share/cpp_common/cmake
 
+//The directory containing a CMake configuration file for dynamic_reconfigure.
+dynamic_reconfigure_DIR:PATH=/opt/ros/kinetic/share/dynamic_reconfigure/cmake
+
+//The directory containing a CMake configuration file for gencpp.
+gencpp_DIR:PATH=/opt/ros/kinetic/share/gencpp/cmake
+
+//The directory containing a CMake configuration file for geneus.
+geneus_DIR:PATH=/opt/ros/kinetic/share/geneus/cmake
+
+//The directory containing a CMake configuration file for genlisp.
+genlisp_DIR:PATH=/opt/ros/kinetic/share/genlisp/cmake
+
+//The directory containing a CMake configuration file for genmsg.
+genmsg_DIR:PATH=/opt/ros/kinetic/share/genmsg/cmake
+
+//The directory containing a CMake configuration file for gennodejs.
+gennodejs_DIR:PATH=/opt/ros/kinetic/share/gennodejs/cmake
+
+//The directory containing a CMake configuration file for genpy.
+genpy_DIR:PATH=/opt/ros/kinetic/share/genpy/cmake
+
+//The directory containing a CMake configuration file for geographic_msgs.
+geographic_msgs_DIR:PATH=/opt/ros/kinetic/share/geographic_msgs/cmake
+
+//The directory containing a CMake configuration file for geometry_msgs.
+geometry_msgs_DIR:PATH=/opt/ros/kinetic/share/geometry_msgs/cmake
+
 //Value Computed by CMake
 gtest_BINARY_DIR:STATIC=/home/pi/propelled_cow/build/gtest
 
@@ -278,10 +308,22 @@ gtest_force_shared_crt:BOOL=OFF
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/kinetic/lib/libxmlrpcpp.so
+lib:FILEPATH=/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so
+
+//The directory containing a CMake configuration file for mavros_msgs.
+mavros_msgs_DIR:PATH=/opt/ros/kinetic/share/mavros_msgs/cmake
+
+//The directory containing a CMake configuration file for message_generation.
+message_generation_DIR:PATH=/opt/ros/kinetic/share/message_generation/cmake
 
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/kinetic/share/message_runtime/cmake
+
+//Value Computed by CMake
+multiwii_BINARY_DIR:STATIC=/home/pi/propelled_cow/build/ros-multiwii
+
+//Value Computed by CMake
+multiwii_SOURCE_DIR:STATIC=/home/pi/propelled_cow/src/ros-multiwii
 
 //Value Computed by CMake
 propelled_cow_BINARY_DIR:STATIC=/home/pi/propelled_cow/build/propelled_cow
@@ -310,8 +352,14 @@ rospy_DIR:PATH=/opt/ros/kinetic/share/rospy/cmake
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/kinetic/share/rostime/cmake
 
+//The directory containing a CMake configuration file for sensor_msgs.
+sensor_msgs_DIR:PATH=/opt/ros/kinetic/share/sensor_msgs/cmake
+
 //The directory containing a CMake configuration file for std_msgs.
 std_msgs_DIR:PATH=/opt/ros/kinetic/share/std_msgs/cmake
+
+//The directory containing a CMake configuration file for uuid_msgs.
+uuid_msgs_DIR:PATH=/opt/ros/kinetic/share/uuid_msgs/cmake
 
 //The directory containing a CMake configuration file for xmlrpcpp.
 xmlrpcpp_DIR:PATH=/opt/ros/kinetic/share/xmlrpcpp/cmake
@@ -418,7 +466,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -457,6 +505,42 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+Eigen_CFLAGS:INTERNAL=-I/usr/include/eigen3
+Eigen_CFLAGS_I:INTERNAL=
+Eigen_CFLAGS_OTHER:INTERNAL=
+Eigen_FOUND:INTERNAL=1
+Eigen_INCLUDEDIR:INTERNAL=
+Eigen_INCLUDE_DIRS:INTERNAL=/usr/include/eigen3
+Eigen_LDFLAGS:INTERNAL=
+Eigen_LDFLAGS_OTHER:INTERNAL=
+Eigen_LIBDIR:INTERNAL=
+Eigen_LIBRARIES:INTERNAL=
+Eigen_LIBRARY_DIRS:INTERNAL=
+Eigen_LIBS:INTERNAL=
+Eigen_LIBS_L:INTERNAL=
+Eigen_LIBS_OTHER:INTERNAL=
+Eigen_LIBS_PATHS:INTERNAL=
+Eigen_PREFIX:INTERNAL=/usr
+Eigen_STATIC_CFLAGS:INTERNAL=-I/usr/include/eigen3
+Eigen_STATIC_CFLAGS_I:INTERNAL=
+Eigen_STATIC_CFLAGS_OTHER:INTERNAL=
+Eigen_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/eigen3
+Eigen_STATIC_LDFLAGS:INTERNAL=
+Eigen_STATIC_LDFLAGS_OTHER:INTERNAL=
+Eigen_STATIC_LIBDIR:INTERNAL=
+Eigen_STATIC_LIBRARIES:INTERNAL=
+Eigen_STATIC_LIBRARY_DIRS:INTERNAL=
+Eigen_STATIC_LIBS:INTERNAL=
+Eigen_STATIC_LIBS_L:INTERNAL=
+Eigen_STATIC_LIBS_OTHER:INTERNAL=
+Eigen_STATIC_LIBS_PATHS:INTERNAL=
+Eigen_VERSION:INTERNAL=3.2.92
+Eigen_eigen3_INCLUDEDIR:INTERNAL=
+Eigen_eigen3_LIBDIR:INTERNAL=
+Eigen_eigen3_PREFIX:INTERNAL=
+Eigen_eigen3_VERSION:INTERNAL=
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.1()]
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python][v2.7.12()]
 //Details about finding Threads
@@ -476,10 +560,49 @@ GTEST_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GTEST_MAIN_LIBRARY_DEBUG
 GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //This needs to be in PYTHONPATH when 'setup.py install' is called.
 //  And it needs to match.  But setuptools won't tell us where
 // it will install things.
 PYTHON_INSTALL_DIR:INTERNAL=lib/python2.7/dist-packages
+__pkg_config_checked_Eigen:INTERNAL=1
+__pkg_config_checked_msp:INTERNAL=1
+msp_CFLAGS:INTERNAL=-I/opt/ros/kinetic/include/
+msp_CFLAGS_I:INTERNAL=
+msp_CFLAGS_OTHER:INTERNAL=
+msp_FOUND:INTERNAL=1
+msp_INCLUDEDIR:INTERNAL=/opt/ros/kinetic/include/
+msp_INCLUDE_DIRS:INTERNAL=/opt/ros/kinetic/include/
+msp_LDFLAGS:INTERNAL=-L/opt/ros/kinetic/lib;-lmsp;-lmsp_fcu;-lmspclient;-lmsp_msg_print
+msp_LDFLAGS_OTHER:INTERNAL=
+msp_LIBDIR:INTERNAL=/opt/ros/kinetic/lib
+msp_LIBRARIES:INTERNAL=msp;msp_fcu;mspclient;msp_msg_print
+msp_LIBRARY_DIRS:INTERNAL=/opt/ros/kinetic/lib
+msp_LIBS:INTERNAL=
+msp_LIBS_L:INTERNAL=
+msp_LIBS_OTHER:INTERNAL=
+msp_LIBS_PATHS:INTERNAL=
+msp_PREFIX:INTERNAL=/opt/ros/kinetic
+msp_STATIC_CFLAGS:INTERNAL=-I/opt/ros/kinetic/include/
+msp_STATIC_CFLAGS_I:INTERNAL=
+msp_STATIC_CFLAGS_OTHER:INTERNAL=
+msp_STATIC_INCLUDE_DIRS:INTERNAL=/opt/ros/kinetic/include/
+msp_STATIC_LDFLAGS:INTERNAL=-L/opt/ros/kinetic/lib;-lmsp;-lmsp_fcu;-lmspclient;-lmsp_msg_print
+msp_STATIC_LDFLAGS_OTHER:INTERNAL=
+msp_STATIC_LIBDIR:INTERNAL=
+msp_STATIC_LIBRARIES:INTERNAL=msp;msp_fcu;mspclient;msp_msg_print
+msp_STATIC_LIBRARY_DIRS:INTERNAL=/opt/ros/kinetic/lib
+msp_STATIC_LIBS:INTERNAL=
+msp_STATIC_LIBS_L:INTERNAL=
+msp_STATIC_LIBS_OTHER:INTERNAL=
+msp_STATIC_LIBS_PATHS:INTERNAL=
+msp_VERSION:INTERNAL=
+msp_msp_INCLUDEDIR:INTERNAL=
+msp_msp_LIBDIR:INTERNAL=
+msp_msp_PREFIX:INTERNAL=
+msp_msp_VERSION:INTERNAL=
+prefix_result:INTERNAL=
 

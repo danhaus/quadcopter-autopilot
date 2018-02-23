@@ -1,0 +1,8 @@
+prefix=/home/pi/propelled_cow/install
+
+Name: multiwii
+Description: Description of multiwii
+Version: 2.1.0
+Cflags: -I/home/pi/propelled_cow/install/include
+Libs: -L/home/pi/propelled_cow/install/lib 
+Requires: message_runtime

@@ -7,6 +7,6 @@ http://wiki.ros.org/kinetic/Installation/Ubuntu
 Setting up rsub (using Sublime Text over ssh)
 http://www.knight-of-pi.org/even-better-sublime-text-3-over-ssh-on-a-raspberry-pi-with-rsub/
 
-ROS dependencies update and install before catkin_make with new packages
-rosdep update
-rosdep install --from-paths src --ignore-src --rosdistro kinetic -y
+Additional ROS packages
+currently used: rosflight, multiwii
+not used: mavros

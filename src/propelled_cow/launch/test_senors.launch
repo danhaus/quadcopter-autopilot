@@ -1,7 +1,18 @@
 <launch>
 
-  <node pkg="propelled_cow" name="ultrasonic_test" type="ultrasonic"/>
-  <node pkg="propelled_cow" name="accelerometer_compas_test" type="accelerometer_compas"/>
-
+	<node pkg="propelled_cow" name="ultrasonic_test" type="ultrasonic"/>
+	<node pkg="propelled_cow" name="accelerometer_compas_test" type="accelerometer_compas"/>
+	<node pkg="multiwii" name="multiwii_test" type="accelerometer_compas"/>
+	<!-- Rosbag records messages for later investigation -->
+	<node pkg="rosbag" name="record_test" type="record" args="-a -o ~/rosbags/sailingclub_tests"/>
+	<!-- multiwii gets data directly from Naze32 -->
+	<node name="multiwii" pkg="multiwii" type="multiwii_node">
+		<param name="device" value="/dev/ttyUSB0"/>
+		<!-- default cleanflight/betaflight baudrate is 115200 -->
+		<!-- increase serial baudrate and cleanflight's "serial_update_rate_hz"to enable higher MSP update rates -->
+		<param name="baudrate" value="115200"/>
+		<rosparam command="load" file="$(find multiwii)/cfg/Naze32_rev6.yaml"/>
+		<rosparam command="load" file="$(find multiwii)/cfg/UpdateRates_RPiZero.yaml"/>
+	</node>
 
 </launch>

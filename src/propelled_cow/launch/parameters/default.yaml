@@ -10,4 +10,4 @@ accelerometer_compass/rate: 200
 velocity/Kp: 0.5
 velocity/Ki: 0
 velocity/Kd: 0.1
-velocity/demand: 10 # mm/s
+velocity/demand: 20 # mm/s

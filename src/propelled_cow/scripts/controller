@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 
 import rospy
-from std_msgs.msg import Int32
+from std_msgs.msg import Int16, Int32
 
 import propelled_cow.PID_control as _PID
 
 
 PID_velocity = rospy.get_param('velocity')
-velocity_demand = velocity['demand']
-controller = _PID.PID(velocity_PID['Kp'], velocity_PID['Ki'], velocity_PID['Kd'])
+velocity_demand = PID_velocity['demand']
+controller = _PID.PID(PID_velocity['Kp'], PID_velocity['Ki'], PID_velocity['Kd'], 0, 1000)
 
 pub = rospy.Publisher('PWM_velocity', Int16, queue_size=10)
 rospy.init_node('controller', anonymous=True)
@@ -23,7 +23,7 @@ def listener():
 def PWM_velocity(data):
     velocity_curr = data.data
     err = velocity_demand - velocity_curr
-    PWM_raw = controller.update_PID(err)
+    PWM_raw = - controller.update_PID(err)
     pub.publish(PWM_raw)
 
 if __name__ == '__main__':

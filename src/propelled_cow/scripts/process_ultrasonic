@@ -10,11 +10,12 @@ rospy.init_node('process_ultrasonic', anonymous=True)
 
 
 def listener():
-    rospy.Subscriber('ultrasonic_raw', Int16, callback)
+    rospy.Subscriber('ultrasonic_raw', Int16, velocity_pub)
     rospy.spin()
 
-def callback(data):
-    rospy.loginfo(rospy.get_caller_id() + 'I heard %s', data.data)
+def velocity_pub(data):
+	pub.publish(data.data)
+    # rospy.loginfo(rospy.get_caller_id() + 'I heard %s', data.data)
 
 # def listener():
 

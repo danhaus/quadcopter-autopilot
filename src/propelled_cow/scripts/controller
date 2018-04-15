@@ -4,27 +4,49 @@ import rospy
 from std_msgs.msg import Int16, Int32
 
 import propelled_cow.PID_control as _PID
+from propelled_cow.ThrottlePWM import ThrottlePWM
 
 class Controller(object):
 	"""docstring for ClassName"""
 	def __init__(self, arg):
 		self.PID_velocity = rospy.get_param('velocity')
+		self.throttle_PWM = ThrottlePWM(rospy.get_param('throttle'), 333, 3000)
 		self.velocity_demand = PID_velocity['demand']
 		self.controller = _PID.PID(PID_velocity['Kp'], PID_velocity['Ki'], PID_velocity['Kd'], 0, 1000) # THE LAST TWO VALUES NEEDS TO BE ADJUSTED
 		self.pub = rospy.Publisher('PWM_velocity', Int16, queue_size=10)
 		rospy.init_node('controller', anonymous=True)
 
+		self.PWM_current = 0
+		self.velocity = 0
 
 	def PWM_demand_velocity(self):
-	    rospy.Subscriber('ultrasonic_velocity', Int32, self.PWM_velocity)
+	    rospy.Subscriber('ultrasonic_velocity', Int32, self.update_velocity)
 	    # spin() simply keeps python from exiting until this node is stopped
 	    rospy.spin() # IT MIGHT NOT NEED TO BE HERE
 
-	def PWM_velocity(self, data):
-	    velocity_curr = data.data
-	    err = self.velocity_demand - velocity_curr
-	    PWM_raw = - controller.update_PID(err)
-	    pub.publish(PWM_raw)
+	def update_PWM_velocity(self, data):
+		self.velocity = data.data
+
+	def PWM_velocity(self):
+		# SHALL BE REWRITEN MAYBE LIKE A SERVICE TO BE MORE EFFICIENT - NOW IT CAN BE SIGNIFICANTLY DELAYED
+		"""
+		?? Compute PWM correction (command) for throttle, sets it to the throttle and publishes it.
+		"""
+		rate = rospy.Rate(rospy.get_param("ultrasonic/rate"))
+		while not rospy.is_shutdown():
+		    err = self.velocity_demand - self.velocity
+		    PWM_correction = - controller.update_PID(err)
+		    PWM_current = PWM_current + PWM_correction
+		    throttle_PWM.changeDutyCycle(PWM_current)
+		    pub.publish(PWM_current)
+		    rate.sleep()
+
+
+    # TASKS
+    def reachAltitude(self, altitude):
+    	pass
+		
+
 
 if __name__ == '__main__':
 	controller = Controller()

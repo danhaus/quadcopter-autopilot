@@ -1,6 +1,7 @@
 # PINS
 ultrasonic/trigger: 18
 ultrasonic/echo: 24
+throttle: 15
 
 # TOPIC RATES [Hz]
 ultrasonic/rate: 4

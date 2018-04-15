@@ -4,7 +4,7 @@ import time
 
 class HCSR04 (object):
 
-    def __init__(self, trigger=18, echo=24):
+    def __init__(self, trigger, echo):
         #GPIO Mode (BOARD / BCM)
         GPIO.setmode(GPIO.BCM)
          

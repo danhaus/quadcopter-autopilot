@@ -47,7 +47,9 @@ import RPi.GPIO as GPIO
 # from propelled_cow.ultrasonic_hc_sr04 import HCSR04
 
 def talker():
-    ultrasonic = HCSR04()
+    TRIGGER = rospy.get_param('pins/ultrasonic/trigger')
+    ECHO = rospy.get_param('pins/ultrasonic/echo')
+    ultrasonic = HCSR04(TRIGGER, ECHO)
     pub = rospy.Publisher('ultrasonic', Int16, queue_size=10)
     rospy.init_node('hs_sro4', anonymous=True)
     rate = rospy.Rate(4) # Hz

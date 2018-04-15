@@ -1,0 +1,3 @@
+# PINS
+pins/ultrasonic/trigger: 18
+pins/ultrasonic/echo: 24

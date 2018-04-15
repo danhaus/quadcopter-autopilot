@@ -12,3 +12,6 @@ velocity/Kp: 0.5
 velocity/Ki: 0
 velocity/Kd: 0.1
 velocity/demand: 20 # mm/s
+
+# OTHER
+distance_treshold: 700 # mm

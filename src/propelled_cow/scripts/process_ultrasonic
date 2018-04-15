@@ -9,6 +9,7 @@ RATE = rospy.get_param('ultrasonic/rate')
 pub = rospy.Publisher('ultrasonic_velocity', Int32, queue_size=10)
 rospy.init_node('process_ultrasonic', anonymous=True)
 
+# NEEDS TO PUBLISH TOPIC ultrasonic_distance, Int16
 
 
 def listener():

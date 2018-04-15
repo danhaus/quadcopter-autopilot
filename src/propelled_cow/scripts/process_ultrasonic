@@ -3,6 +3,8 @@
 import rospy
 from std_msgs.msg import Int16
 
+ultrasonic_readings = [0, 0]
+
 RATE = rospy.get_param('ultrasonic/rate')
 pub = rospy.Publisher('ultrasonic_velocity', Int16, queue_size=10)
 rospy.init_node('process_ultrasonic', anonymous=True)
@@ -10,26 +12,15 @@ rospy.init_node('process_ultrasonic', anonymous=True)
 
 
 def listener():
-    rospy.Subscriber('ultrasonic_raw', Int16, velocity_pub)
-    rospy.spin()
+	rospy.Subscriber('ultrasonic_raw', Int16, velocity_pub)
+	rospy.spin()
 
 def velocity_pub(data):
-	pub.publish(data.data)
-    # rospy.loginfo(rospy.get_caller_id() + 'I heard %s', data.data)
-
-# def listener():
-
-#     # In ROS, nodes are uniquely named. If two nodes with the same
-#     # name are launched, the previous one is kicked off. The
-#     # anonymous=True flag means that rospy will choose a unique
-#     # name for our 'listener' node so that multiple listeners can
-#     # run simultaneously.
-#     rospy.init_node('listener', anonymous=True)
-
-#     rospy.Subscriber('chatter', String, callback)
-
-#     # spin() simply keeps python from exiting until this node is stopped
-#     rospy.spin()
+	dist_curr = data.data
+	ultrasonic_readings.append(dist_curr) # append current distance reading
+	pop = ultrasonic_readings.pop(0) # remove the oldes value
+	velocity = ((dist_curr - ultrasonic_readings[-2])*RATE) # mm/s
+	pub.publish(velocity)
 
 if __name__ == '__main__':
     listener()

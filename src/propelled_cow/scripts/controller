@@ -3,7 +3,7 @@
 import rospy
 from std_msgs.msg import Int32
 
-import propelled_cow.pid_control as _PID
+import propelled_cow.PID_control as _PID
 
 
 PID_velocity = rospy.get_param('velocity')

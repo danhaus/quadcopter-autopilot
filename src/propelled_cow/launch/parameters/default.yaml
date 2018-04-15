@@ -4,4 +4,4 @@ ultrasonic/echo: 24
 
 # TOPIC RATES [Hz]
 ultrasonic/rate: 4
-accelerometer_compass/rate: 
+accelerometer_compass/rate: 200

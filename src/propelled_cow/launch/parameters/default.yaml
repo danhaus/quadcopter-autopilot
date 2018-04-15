@@ -5,3 +5,9 @@ ultrasonic/echo: 24
 # TOPIC RATES [Hz]
 ultrasonic/rate: 4
 accelerometer_compass/rate: 200
+
+# PID
+velocity/Kp: 0.5
+velocity/Ki: 0
+velocity/Kd: 0.1
+velocity/demand: 10 # mm/s

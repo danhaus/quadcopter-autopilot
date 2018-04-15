@@ -12,7 +12,8 @@ def talker():
     pub_accel = rospy.Publisher('accelerometer', Vector3, queue_size=10)
     pub_mag = rospy.Publisher('magnetometer', Vector3, queue_size=10)
     rospy.init_node('accelerometer', anonymous=True)
-    rate = rospy.Rate(200) # Hz
+    RATE = rospy.get_param('accelerometer_compass/rate')
+    rate = rospy.Rate(RATE) # Hz
     while not rospy.is_shutdown():
         accel, mag = accelerometer.read()
 

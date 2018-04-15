@@ -1,3 +1,7 @@
 # PINS
-pins/ultrasonic/trigger: 18
-pins/ultrasonic/echo: 24
+ultrasonic/trigger: 18
+ultrasonic/echo: 24
+
+# TOPIC RATES [Hz]
+ultrasonic/rate: 4
+accelerometer_compass/rate: 

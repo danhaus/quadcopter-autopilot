@@ -9,6 +9,6 @@
     Nodes
     -->
 	<node pkg="propelled_cow" name="ultrasonic_test" type="ultrasonic"/>
-	<node pkg="propelled_cow" name="accelerometer_compas_test" type="accelerometer_compas"/>
+	<node pkg="propelled_cow" name="accelerometer_compass_test" type="accelerometer_compass"/>
 
 </launch>

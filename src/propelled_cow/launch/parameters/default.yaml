@@ -8,6 +8,10 @@ ultrasonic/rate: 4
 accelerometer_compass/rate: 200
 
 # PID
+distance/Kp: 0.5
+distance/Ki: 0
+distance/Kd: 0.1
+
 velocity/Kp: 0.5
 velocity/Ki: 0
 velocity/Kd: 0.1
@@ -15,3 +19,7 @@ velocity/demand: 20 # mm/s
 
 # OTHER
 distance_treshold: 700 # mm
+
+# min & max length of duty cycle for throttle, used in PID saturation
+PWM/min: 10 # us
+PWM/max: 2000 # us

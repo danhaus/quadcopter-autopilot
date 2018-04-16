@@ -2,8 +2,6 @@ import time
 import RPi.GPIO as GPIO
 
 class Servo:
-
-
 	# constructor
     def __init__(self, pin, max_right=5, max_left=10):
     	self.pin = pin

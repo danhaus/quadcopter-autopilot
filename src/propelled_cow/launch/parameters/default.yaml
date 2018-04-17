@@ -1,15 +1,19 @@
 # PINS
 # https://pinout.xyz/
 # PWM - 4 pins, but only 2 identical outputs: GPIO 33 & 35 the same, GPIO 12 & 32 the same
+#################################################
 ultrasonic/trigger: 18
 ultrasonic/echo: 24
 throttle: 33
+servo/pin: 12
 
 # TOPIC RATES [Hz]
+#################################################
 ultrasonic/rate: 10 # max 33 Hz allowing to read max distance of 10 m
 accelerometer_compass/rate: 200
 
 # PID
+#################################################
 distance/Kp: 0.5
 distance/Ki: 0
 distance/Kd: 0.1
@@ -19,9 +23,12 @@ velocity/Ki: 0
 velocity/Kd: 0.1
 velocity/demand: 20 # mm/s
 
-# OTHER
+# LIMITS / CONSTANTS
+#################################################
 distance_treshold: 700 # mm
 
 # min & max length of duty cycle for throttle, used in PID saturation
 PWM/min: 10 # us
 PWM/max: 2000 # us
+servo/min: 5
+servo/max: 10

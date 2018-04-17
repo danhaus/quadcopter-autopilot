@@ -3,17 +3,18 @@
 import rospy
 from std_msgs.msg import Int16, Int32
 
-from propelled_cow.ThrottlePWM import ThrottlePWM
+from propelled_cow.servo_controller import Servo
 
-throttle_PWM = ThrottlePWM(rospy.get_param('throttle'), 333, 3000)
+servo_setting = rospy.get_param('servo')
+servo = Servo(servo_setting['pin'], servo_setting['min'], servo_setting['max'])
 
 def callback(data):
-	duty_cycle = data.data
-	throttle_PWM.changeDutyCycle(duty_cycle)
+	angle = data.data
+	servo.set_angle(angle)
 
 def listener():
-	rospy.init_node('throttle_driver', anonymous=True)
-	rospy.Subscriber('PWM_throttle', Int16, callback)
+	rospy.init_node('servo_driver', anonymous=True)
+	rospy.Subscriber('servo_angle', Int16, callback)
 	# spin() simply keeps python from exiting until this node is stopped
 	rospy.spin()
 

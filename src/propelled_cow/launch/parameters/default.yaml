@@ -1,7 +1,7 @@
 # PINS
 ultrasonic/trigger: 18
 ultrasonic/echo: 24
-throttle: 15
+throttle: 13
 
 # TOPIC RATES [Hz]
 ultrasonic/rate: 10 # max 33 Hz allowing to read max distance of 10 m

@@ -27,8 +27,8 @@ class Controller(object):
 		err = self.distance_demand - self.distance
 		PWM_correction = -self.controller.update_PID(err)
 		PWM_raw = self.PWM_current + PWM_correction
-		self.PWM_current = _PID.saturation(rawangle, self.PWM_limits['min'], self.PWM_limits['max'])
-		throttle_PWM.changeDutyCycle(self.PWM_current)
+		self.PWM_current = _PID.saturation(PWM_raw, self.PWM_limits['min'], self.PWM_limits['max'])
+		self.throttle_PWM.changeDutyCycle(self.PWM_current)
 		self.PWM_pub.publish(self.PWM_current)
 
 if __name__ == '__main__':

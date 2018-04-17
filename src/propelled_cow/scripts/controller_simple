@@ -15,6 +15,7 @@ class Controller(object):
 		self.controller = _PID.PID(self.PID_vals['Kp'], self.PID_vals['Ki'], self.PID_vals['Kd'], 0, 1000) # THE LAST TWO VALUES NEEDS TO BE ADJUSTED
 		self.PWM_pub = rospy.Publisher('PWM_throttle', Int16, queue_size=10)
 		rospy.init_node('controller', anonymous=True)
+		self.PWM_limits = rospy.get_param('PWM')
 
 		self.PWM_current = 0
 
@@ -24,9 +25,9 @@ class Controller(object):
 	def process_ultrasonic_distance(self, data):
 		self.distance = data.data
 		err = self.distance_demand - self.distance
-		PWM_correction = -controller.update_PID(err)
+		PWM_correction = -self.controller.update_PID(err)
 		PWM_raw = self.PWM_current + PWM_correction
-		self.PWM_current = _PID.saturation(rawangle,-rudder['maxAngle'], rudder['maxAngle'])
+		self.PWM_current = _PID.saturation(rawangle, self.PWM_limits['min'], self.PWM_limits['max'])
 		throttle_PWM.changeDutyCycle(self.PWM_current)
 		self.PWM_pub.publish(self.PWM_current)
 

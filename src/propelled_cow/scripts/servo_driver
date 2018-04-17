@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+
+import rospy
+from std_msgs.msg import Int16, Int32
+
+from propelled_cow.ThrottlePWM import ThrottlePWM
+
+throttle_PWM = ThrottlePWM(rospy.get_param('throttle'), 333, 3000)
+
+def callback(data):
+	duty_cycle = data.data
+	throttle_PWM.changeDutyCycle(duty_cycle)
+
+def listener():
+	rospy.init_node('throttle_driver', anonymous=True)
+	rospy.Subscriber('PWM_throttle', Int16, callback)
+	# spin() simply keeps python from exiting until this node is stopped
+	rospy.spin()
+
+if __name__ == '__main__':
+	listener()

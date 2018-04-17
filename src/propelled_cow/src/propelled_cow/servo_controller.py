@@ -5,6 +5,8 @@ class Servo:
 	# constructor
     def __init__(self, pin, max_right=5, max_left=10):
     	self.pin = pin
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(self.pin, GPIO.OUT)
         self.max_right = max_right
         self.max_left = max_left
     	self.pwm = GPIO.PWM(pin, 50)
@@ -17,7 +19,7 @@ class Servo:
         self.pwm.start(self.set_angle)
 
     def stop(self):
-	   self.pwm.stop()
+        self.pwm.stop()
 
     def example(self): # in deg
         self.pwm.start(self.max_right)
@@ -28,9 +30,7 @@ class Servo:
         #GPIO.cleanup()
 
 if(__name__ == '__main__'): # connect servo to the pin below
-    pin = 11
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(pin, GPIO.OUT)
+    pin = 12
     servo = Servo(pin, max_right=4, max_left=6)
     servo.example()
 

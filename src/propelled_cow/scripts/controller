@@ -8,7 +8,7 @@ from propelled_cow.ThrottlePWM import ThrottlePWM
 
 class Controller(object):
 	"""docstring for ClassName"""
-	def __init__(self, arg):
+	def __init__(self):
 		self.PID_velocity = rospy.get_param('velocity')
 		self.throttle_PWM = ThrottlePWM(rospy.get_param('throttle'), 333, 3000)
 		self.velocity_demand = PID_velocity['demand']
@@ -21,10 +21,10 @@ class Controller(object):
 		self.PWM_velocity_enabled = False
 		self.distance_treshold = rospy.get_param('distance_treshold')
 
-	    rospy.Subscriber('ultrasonic_velocity', Int32, self.process_PWM_velocity)
-	    rospy.Subscriber('ultrasonic_distance', Int16, self.process_ultrasonic_distance)
-	    # spin() simply keeps python from exiting until this node is stopped
-	    rospy.spin() # IT MIGHT NOT NEED TO BE HERE
+		rospy.Subscriber('ultrasonic_velocity', Int32, self.process_PWM_velocity)
+		rospy.Subscriber('ultrasonic_distance', Int16, self.process_ultrasonic_distance)
+		# spin() simply keeps python from exiting until this node is stopped
+		rospy.spin() # IT MIGHT NOT NEED TO BE HERE
 
 	def process_ultrasonic_distance(self, data):
 		distance = data.data
@@ -34,26 +34,26 @@ class Controller(object):
 	def process_PWM_velocity(self, data):
 		self.velocity = data.data
 		if PWM_velocity_enabled == True:
-		    err = self.velocity_demand - self.velocity
-		    PWM_correction = - controller.update_PID(err)
-		    self.PWM_current = self.PWM_current + PWM_correction
-		    throttle_PWM.changeDutyCycle(self.PWM_current)
-		    self.PWM_pub.publish(self.PWM_current)
+			err = self.velocity_demand - self.velocity
+			PWM_correction = - controller.update_PID(err)
+			self.PWM_current = self.PWM_current + PWM_correction
+			throttle_PWM.changeDutyCycle(self.PWM_current)
+			self.PWM_pub.publish(self.PWM_current)
 
 
 	def update_PWM_velocity_enabled(self, val): # boolean val
 		self.PWM_velocity_enabled = val
 
 
-    # TASKS
-    def reachAltitude(self):
-    	"""
-    	Enables use of PWM_velocity - computes and writes throttle values to the flight control and publishes them.
-    	Otherwise it does not do any of those.
-    	Altitude to be reached is set in the parametres.
-    	"""
-    	self.update_PWM_velocity_enabled(True)
+	# TASKS
+	def reachAltitude(self):
+		"""
+		Enables use of PWM_velocity - computes and writes throttle values to the flight control and publishes them.
+		Otherwise it does not do any of those.
+		Altitude to be reached is set in the parametres.
+		"""
+		self.update_PWM_velocity_enabled(True)
 
 if __name__ == '__main__':
 	controller = Controller()
-    controller.reachAltitude()
+	controller.reachAltitude()

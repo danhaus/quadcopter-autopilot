@@ -12,7 +12,7 @@ class Controller(object):
 		self.throttle_PWM = ThrottlePWM(rospy.get_param('throttle'), 333, 3000)
 		self.distance_demand = rospy.get_param('distance_treshold')
 		self.PID_vals = rospy.get_param('distance')
-		self.controller = _PID.PID(PID_vals['Kp'], PID_vals['Ki'], PID_vals['Kd'], 0, 1000) # THE LAST TWO VALUES NEEDS TO BE ADJUSTED
+		self.controller = _PID.PID(self.PID_vals['Kp'], self.PID_vals['Ki'], self.PID_vals['Kd'], 0, 1000) # THE LAST TWO VALUES NEEDS TO BE ADJUSTED
 		self.PWM_pub = rospy.Publisher('PWM_throttle', Int16, queue_size=10)
 		rospy.init_node('controller', anonymous=True)
 

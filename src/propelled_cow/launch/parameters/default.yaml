@@ -4,7 +4,7 @@ ultrasonic/echo: 24
 throttle: 15
 
 # TOPIC RATES [Hz]
-ultrasonic/rate: 4
+ultrasonic/rate: 10 # max 33 Hz allowing to read max distance of 10 m
 accelerometer_compass/rate: 200
 
 # PID

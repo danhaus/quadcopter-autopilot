@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+
+import rospy
+from std_msgs.msg import Int16, Int32
+
+# ultrasonic_readings = [0, 0]
+
+# RATE = rospy.get_param('ultrasonic/rate')
+pub = rospy.Publisher('ultrasonic_distance', Int16, queue_size=10)
+rospy.init_node('process_ultrasonic', anonymous=True)
+
+rospy.Subscriber('ultrasonic_raw', Int16, process_ultrasonic)
+rospy.spin()
+
+def process_ultrasonic(data):
+	dist_curr = data.data
+	# FILTER COMES HERE
+	pub.publish(dist_curr)

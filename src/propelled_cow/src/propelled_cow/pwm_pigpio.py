@@ -4,7 +4,7 @@ import pigpio
 # FIRST RUN sudo pigpiod in terminal
 
 class Servo:
-	def __init__(self, pin, min_val=1000, max_val=2000): # vals in us
+	def __init__(self, pin, min_val=800, max_val=1800): # vals in us
 		self.pin = pin
 		self.pi = pigpio.pi()
 		self.pi.set_mode(self.pin, pigpio.OUTPUT)
@@ -18,14 +18,14 @@ class Servo:
 
 	def stop(self):
 		self.pi.set_servo_pulsewidth(self.pin, 0)
-		pi.stop()
+		self.pi.stop()
 
 	def example(self):
-		self.pi.set_servo_pulsewidth(self.pin, 1000) # safe anti-clockwise
+		self.pi.set_servo_pulsewidth(self.pin, self.min) # safe anti-clockwise
 		time.sleep(2)
-		self.pi.set_servo_pulsewidth(self.pin, 1500) # centre
+		self.pi.set_servo_pulsewidth(self.pin, (self.max+self.min)/2) # centre
 		time.sleep(2)
-		self.pi.set_servo_pulsewidth(self.pin, 2000) # safe clockwise
+		self.pi.set_servo_pulsewidth(self.pin, self.max) # safe clockwise
 		time.sleep(2)
 		self.stop()
 

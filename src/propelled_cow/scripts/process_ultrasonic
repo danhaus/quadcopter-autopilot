@@ -29,13 +29,13 @@ def process_ultrasonic(data):
 
 def median(lst):
 	n = len(lst)
+	data_processed = []
 	if n < 3:
 		return None
 	else:
 		for i in range(len(lst)):
 			lst_3 = [lst[-i-1], lst[-i-2], lst[-i-3]]
-
-			return sorted(lst_3)[1] 
+			data_processed.append(sorted(lst_3)[1])
 
 def cut_crazy_values(data):
 	"""

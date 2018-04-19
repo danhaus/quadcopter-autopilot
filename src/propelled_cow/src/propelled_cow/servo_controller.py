@@ -23,14 +23,14 @@ class Servo:
 
     def example(self): # in deg
         self.pwm.start(self.max_right)
-        time.sleep(2)
+        time.sleep(5)
         self.pwm.ChangeDutyCycle(self.max_left)
-        time.sleep(2)
+        time.sleep(5)
         self.pwm.stop()
         #GPIO.cleanup()
 
 if(__name__ == '__main__'): # connect servo to the pin below
     pin = 12
-    servo = Servo(pin, max_right=4, max_left=6)
+    servo = Servo(pin, max_right=5, max_left=10)
     servo.example()
 

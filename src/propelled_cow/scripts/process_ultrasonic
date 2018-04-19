@@ -3,8 +3,8 @@
 import rospy
 from std_msgs.msg import Int16, Int32
 
-ultrasonic_readings = [0, 0, 0]
-previousChanged = False
+readings_cut = [0, 0, 0]
+previous_changed = False
 
 offset = rospy.get_param('filter/offset')
 
@@ -18,13 +18,17 @@ def start():
 
 def process_ultrasonic(data):
 	dist_curr = data.data
-	# update the list with the new reading
-	ultrasonic_readings.append(dist_curr)
-	# delete the oldest valueß
-	pop = ultrasonic_readings.pop(0)
-	# cut crazy values
-	cut_crazy_values(ultrasonic_readings)
+	# delete the oldest value
+	pop = readings_cut.pop(0)
+	# filter current reading
+	cut_value = cut_crazy_values(readings_cut, dist_curr)
+	# update the list with the new cut reading
+	readings_cut.append(cut_value)
+	# delete the oldest value
+	pop = readings_cut.pop(0)
 	# apply median filter
+
+	# publish
 	pub.publish(dist_curr)
 
 def median(lst):
@@ -37,18 +41,20 @@ def median(lst):
 			lst_3 = [lst[-i-1], lst[-i-2], lst[-i-3]]
 			data_processed.append(sorted(lst_3)[1])
 
-def cut_crazy_values(data):
+def cut_crazy_values(data, new_reading):
 	"""
     If the difference between current and previous value is larger than offset,
-    it replaces the current value by the previous one. If the previous value was
-    replaced, it keeps the current value.
+    the previous one. If the previous value was replaced, it returns the current value.
     """
-	if (abs(data[i] - data[i-1])) > offset:
-		if previousChanged == False:
-			data[i] = data[i-1]
+    previous_reading = data[-1]
+	if (abs(new_reading - previous_reading)) > offset:
+		if previous_changed == False:
 			previousChanged = True
+			return data[-1]
 		else:
 			previousChanged = False
+			return new_reading
+	return new_reading
 
 if __name__ == '__main__':
 	start()

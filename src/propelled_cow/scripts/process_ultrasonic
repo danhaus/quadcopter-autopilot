@@ -50,7 +50,7 @@ def cut_crazy_values(data, new_reading):
 	if (abs(new_reading - previous_reading)) > offset:
 		if previous_changed == False:
 			previousChanged = True
-			return data[-1]
+			return previous_reading
 		else:
 			previousChanged = False
 			return new_reading

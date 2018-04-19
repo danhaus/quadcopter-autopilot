@@ -10,7 +10,7 @@ import atexit
 
 import pigpio 
 
-SERVO = 18
+SERVO = 15
 
 MIN_PW = 1000
 MID_PW = 1500

@@ -1,9 +1,9 @@
-# PINS
+# PINS - GPIO.BOARD setting
 # https://pinout.xyz/
 # PWM - 4 pins, but only 2 identical outputs: GPIO 33 & 35 the same, GPIO 12 & 32 the same
 #################################################
-ultrasonic/trigger: 18
-ultrasonic/echo: 24
+ultrasonic/trigger: 12
+ultrasonic/echo: 18
 throttle: 33
 servo/pin: 12
 

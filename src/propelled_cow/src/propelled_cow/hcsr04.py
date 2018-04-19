@@ -6,7 +6,7 @@ class HCSR04 (object):
 
     def __init__(self, trigger, echo):
         #GPIO Mode (BOARD / BCM)
-        GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BOARD)
          
         #set GPIO Pins
         self.GPIO_TRIGGER = trigger

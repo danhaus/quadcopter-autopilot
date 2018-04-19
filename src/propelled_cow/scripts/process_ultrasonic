@@ -30,6 +30,11 @@ def process_ultrasonic(data):
 	pub.publish(median_value)
 
 def median(lst):
+	"""
+	Takes list of 3 most recent readings from ultrasonic, after anomalous values have been
+	cut from data, and calculates the median value of these. Then returns this median value 
+	to be published.
+	"""
 	n = len(lst)
 	if n < 3:
 		return None

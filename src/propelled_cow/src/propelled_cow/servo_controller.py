@@ -33,4 +33,5 @@ if(__name__ == '__main__'): # connect servo to the pin below
     pin = 12
     servo = Servo(pin, max_right=5, max_left=10)
     servo.example()
+    GPIO.cleanup()
 

@@ -24,7 +24,7 @@ def process_ultrasonic(data):
 	cut_value = cut_crazy_values(readings_cut, dist_curr)
 	# update the list with the new cut reading
 	readings_cut.append(cut_value)
-	# apply median filter
+	# apply median filter to cut values
 	median_value = median(readings_cut)
 	# publish
 	pub.publish(median_value)

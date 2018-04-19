@@ -26,6 +26,7 @@ velocity/demand: 20 # mm/s
 # LIMITS / CONSTANTS
 #################################################
 distance_treshold: 700 # mm
+filter/offset: 200 # mm
 
 # min & max length of duty cycle for throttle, used in PID saturation
 PWM/min: 10 # us

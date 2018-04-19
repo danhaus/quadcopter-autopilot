@@ -3,7 +3,10 @@
 import rospy
 from std_msgs.msg import Int16, Int32
 
-# ultrasonic_readings = [0, 0]
+ultrasonic_readings = [0, 0, 0]
+previousChanged = False
+
+offset = rospy.get_param('filter/offset')
 
 # RATE = rospy.get_param('ultrasonic/rate')
 pub = rospy.Publisher('ultrasonic_distance', Int16, queue_size=10)
@@ -15,8 +18,27 @@ def start():
 
 def process_ultrasonic(data):
 	dist_curr = data.data
-	# FILTER COMES HERE
+	# update the list with the new reading
+	ultrasonic_readings.append(dist_curr)
+	# delete the oldest valueß
+	pop = ultrasonic_readings.pop(0)
+	# cut crazy values
+	cut_crazy_values(ultrasonic_readings)
+	# apply median filter
 	pub.publish(dist_curr)
+
+def cut_crazy_values(data):
+	"""
+    If the difference between current and previous value is larger than offset,
+    it replaces the current value by the previous one. If the previous value was
+    replaced, it keeps the current value.
+    """
+	if (abs(data[i] - data[i-1])) > offset:
+		if previousChanged == False:
+			data[i] = data[i-1]
+			previousChanged = True
+		else:
+			previousChanged = False
 
 if __name__ == '__main__':
 	start()

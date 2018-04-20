@@ -20,8 +20,12 @@ def ultrasonic_pub():
     rate = rospy.Rate(RATE) # Hz
     while not rospy.is_shutdown():
         # hello_str = "hello world %s" % rospy.get_time()
-        msg = int(ultrasonic.getDistance())
+        dist = int(ultrasonic.getDistance())
         # rospy.loginfo(msg)
+        # saturation
+        if dist > 32000:
+            dist = 3200
+
         pub.publish(msg)
         rate.sleep()
 

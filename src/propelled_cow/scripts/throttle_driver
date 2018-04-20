@@ -3,13 +3,13 @@
 import rospy
 from std_msgs.msg import Int16, Int32
 
-from propelled_cow.ThrottlePWM import ThrottlePWM
+from propelled_cow.pwm_pigpio import PWM
 
-throttle_PWM = ThrottlePWM(rospy.get_param('throttle'), 333, 3000)
+pwm = PWM(rospy.get_param('throttle'))
 
 def callback(data):
 	duty_cycle = data.data
-	throttle_PWM.changeDutyCycle(duty_cycle)
+	pwm.set_duty_cycle(duty_cycle)
 
 def listener():
 	rospy.init_node('throttle_driver', anonymous=True)

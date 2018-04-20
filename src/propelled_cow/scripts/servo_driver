@@ -3,10 +3,10 @@
 import rospy
 from std_msgs.msg import Int16, Int32
 
-from propelled_cow.servo_controller import Servo
+from propelled_cow.pwm_pigpio import PWM
 
 servo_setting = rospy.get_param('servo')
-servo = Servo(servo_setting['pin'], servo_setting['min'], servo_setting['max'])
+pwm = PWM(servo_setting['pin'], servo_setting['min'], servo_setting['max'])
 
 def callback(data):
 	angle = data.data

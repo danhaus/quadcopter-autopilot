@@ -1,5 +1,5 @@
 import time
-import RPi.GPIO as GPIO
+from propelled_cow.pwm_pigpio import PWM
 
 class ThrottlePWM:
 

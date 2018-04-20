@@ -13,9 +13,12 @@ not used: -
 
 Other libraries:
 pigpio - C library for hardware-generated PWM
+python statistic
 
 Getting the additional libraries:
 sudo apt-get install ros-kinetic-multiwii
 sudo apt-get install ros-kinetic-rosflight
 sudo apt-get install ros-kinetic-mavros
 sudo apt-get install pigpio python-pigpio python3-pigpio
+sudo pip install statistics
+

@@ -37,10 +37,11 @@ class PWM:
 		self.pi.set_servo_pulsewidth(self.pin, 1200)
 		time.sleep(2)
 		self.pi.set_servo_pulsewidth(self.pin, 0)
-		self.stop()
+		# self.stop()
 
 if __name__ == '__main__':
-	pin = 17
+	pin = 4
 	servo = PWM(pin)
+	servo.set_duty_cycle(1000)
 	# servo.example_throttle()
-	servo.example_servo()
+	# servo.example_servo()

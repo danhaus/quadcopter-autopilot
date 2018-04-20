@@ -4,7 +4,7 @@
 #################################################
 ultrasonic/trigger: 12
 ultrasonic/echo: 18
-throttle: 33
+throttle: 4
 servo/pin: 17
 
 # TOPIC RATES [Hz]
@@ -30,6 +30,6 @@ filter/offset: 200 # mm
 
 # min & max length of duty cycle for throttle, used in PID saturation
 PWM/min: 10 # us
-PWM/max: 2000 # us
+PWM/max: 1200 # us
 servo/min: 750 # us
 servo/max: 2300 # us

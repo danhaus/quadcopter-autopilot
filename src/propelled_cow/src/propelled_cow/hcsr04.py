@@ -6,7 +6,7 @@ class HCSR04 (object):
 
     def __init__(self, trigger, echo):
         #GPIO Mode (BOARD / BCM)
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(GPIO.BCM)
          
         #set GPIO Pins
         self.GPIO_TRIGGER = trigger
@@ -48,7 +48,7 @@ class HCSR04 (object):
  
 if __name__ == '__main__':
     try:
-        ultrasonic = HCSR04(18, 24)
+        ultrasonic = HCSR04(12, 18)
         while True:
             dist = ultrasonic.getDistance()
             print ("Measured getDistance = %.1f mm" % dist)

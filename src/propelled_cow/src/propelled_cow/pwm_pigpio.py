@@ -1,5 +1,6 @@
 import time
 import pigpio
+# By default it uses GPIO.BCM pin numbering.
 
 # FIRST RUN sudo pigpiod in terminal
 

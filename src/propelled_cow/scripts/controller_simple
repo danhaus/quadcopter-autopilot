@@ -30,7 +30,7 @@ class Controller(object):
 		self.PWM_current = _PID.saturation(PWM_raw, self.PWM_limits['min'], self.PWM_limits['max'])
 		self.throttle_pub.publish(self.PWM_current)
 
-		if self.distance => self.distance_demand:
+		if self.distance >= self.distance_demand:
 			self.servo_pub.publish(180)
 
 if __name__ == '__main__':

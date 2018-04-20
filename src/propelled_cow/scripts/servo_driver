@@ -10,7 +10,7 @@ pwm = PWM(servo_setting['pin'], servo_setting['min'], servo_setting['max'])
 
 def callback(data):
 	angle = data.data
-	servo.set_angle(angle)
+	pwm.set_angle(angle)
 
 def listener():
 	rospy.init_node('servo_driver', anonymous=True)

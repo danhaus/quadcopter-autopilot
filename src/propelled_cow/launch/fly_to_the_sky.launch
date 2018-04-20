@@ -12,7 +12,7 @@
 	<node pkg="propelled_cow" name="process_ultrasonic" type="process_ultrasonic"/>
 	<!-- <node pkg="propelled_cow" name="accelerometer_compass" type="accelerometer_compass"/> -->
     <node pkg="propelled_cow" name="servo_driver" type="servo_driver"/>
-    <node pkg="propelled_cow" name="throttle_driver" type="throttle_driver"/>
+    <!-- <node pkg="propelled_cow" name="throttle_driver" type="throttle_driver"/> -->
     <node pkg="propelled_cow" name="controller_simple" type="controller_simple"/>
 
 </launch>

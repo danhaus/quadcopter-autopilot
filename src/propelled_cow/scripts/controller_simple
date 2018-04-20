@@ -12,7 +12,8 @@ class Controller(object):
 		self.distance_demand = rospy.get_param('distance_treshold')
 		self.PID_vals = rospy.get_param('distance')
 		self.controller = _PID.PID(self.PID_vals['Kp'], self.PID_vals['Ki'], self.PID_vals['Kd'], 0, 1000) # THE LAST TWO VALUES NEEDS TO BE ADJUSTED
-		self.PWM_pub = rospy.Publisher('PWM_throttle', Int16, queue_size=10)
+		self.throttle_pub = rospy.Publisher('PWM_throttle', Int16, queue_size=10)
+		self.servo_pub = rospy.Publisher('servo_angle', Int16, queue_size=10)
 		rospy.init_node('controller', anonymous=True)
 		self.PWM_limits = rospy.get_param('PWM')
 
@@ -27,7 +28,10 @@ class Controller(object):
 		PWM_correction = -self.controller.update_PID(err)
 		PWM_raw = self.PWM_current + PWM_correction
 		self.PWM_current = _PID.saturation(PWM_raw, self.PWM_limits['min'], self.PWM_limits['max'])
-		self.PWM_pub.publish(self.PWM_current)
+		self.throttle_pub.publish(self.PWM_current)
+
+		if self.distance => self.distance_demand:
+			self.servo_pub.publish(180)
 
 if __name__ == '__main__':
 	controller = Controller()

@@ -4,7 +4,7 @@ import pigpio
 
 # FIRST RUN sudo pigpiod in terminal
 
-class Servo:
+class PWM:
 	def __init__(self, pin, min_val=800, max_val=1800): # vals in us
 		self.pin = pin
 		self.pi = pigpio.pi()
@@ -12,10 +12,13 @@ class Servo:
 		self.min= min_val
 		self.max = max_val
 
-	def setAngle(self, angle):
+	def set_angle(self, angle):
 		deg = float(self.max-self.min)/180
 		duty_cycle = self.min + deg*angle
 		self.pi.set_servo_pulsewidth(self.pin, duty_cycle)
+
+	def set_duty_cycle(self, dc): # duty cycle in us
+		self.pi.set_servo_pulsewidth(self.pin, dc)
 
 	def stop(self):
 		self.pi.set_servo_pulsewidth(self.pin, 0)
@@ -38,6 +41,6 @@ class Servo:
 
 if __name__ == '__main__':
 	pin = 4
-	servo = Servo(pin)
+	servo = PWM(pin)
 	# servo.example_throttle()
 	servo.example_servo()

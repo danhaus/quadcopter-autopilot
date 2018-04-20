@@ -20,7 +20,7 @@ class Servo:
 		self.pi.set_servo_pulsewidth(self.pin, 0)
 		self.pi.stop()
 
-	def example(self):
+	def example_servo(self):
 		self.pi.set_servo_pulsewidth(self.pin, self.min) # safe anti-clockwise
 		time.sleep(2)
 		self.pi.set_servo_pulsewidth(self.pin, (self.max+self.min)/2) # centre
@@ -29,7 +29,14 @@ class Servo:
 		time.sleep(2)
 		self.stop()
 
+	def example_throttle(self):
+		self.pi.set_servo_pulsewidth(self.pin, 1200)
+		time.sleep(2)
+		self.pi.set_servo_pulsewidth(self.pin, 0)
+		self.stop()
+
 if __name__ == '__main__':
 	pin = 4
 	servo = Servo(pin)
-	servo.example()
+	# servo.example_throttle()
+	servo.example_servo()

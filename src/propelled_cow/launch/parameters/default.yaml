@@ -5,7 +5,7 @@
 ultrasonic/trigger: 12
 ultrasonic/echo: 18
 throttle: 33
-servo/pin: 12
+servo/pin: 17
 
 # TOPIC RATES [Hz]
 #################################################

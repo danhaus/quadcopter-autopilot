@@ -26,7 +26,7 @@ def ultrasonic_pub():
         if dist > 32000:
             dist = 3200
 
-        pub.publish(msg)
+        pub.publish(dist)
         rate.sleep()
 
 if __name__ == '__main__':

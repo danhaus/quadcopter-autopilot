@@ -18,9 +18,9 @@ distance/Kp: 0.5
 distance/Ki: 0
 distance/Kd: 0.1
 
-velocity/Kp: 0.5
+velocity/Kp: 0.1
 velocity/Ki: 0
-velocity/Kd: 0.1
+velocity/Kd: 0
 velocity/demand: 20 # mm/s
 
 # LIMITS / CONSTANTS

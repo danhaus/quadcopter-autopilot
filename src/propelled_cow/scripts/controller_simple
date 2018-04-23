@@ -17,7 +17,7 @@ class Controller(object):
 		rospy.init_node('controller', anonymous=True)
 		self.PWM_limits = rospy.get_param('PWM')
 
-		self.PWM_current = 0
+		self.PWM_current = 1000 # us
 
 		rospy.Subscriber('ultrasonic_distance', Int16, self.process_ultrasonic_distance)
 		rospy.spin() # IT MIGHT NOT NEED TO BE HERE

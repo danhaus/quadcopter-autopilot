@@ -40,8 +40,12 @@ class PWM:
 		# self.stop()
 
 if __name__ == '__main__':
-	pin = 4
+	pin = 17
 	servo = PWM(pin)
-	servo.set_duty_cycle(1000)
+	# servo.set_duty_cycle(1000)
 	# servo.example_throttle()
 	# servo.example_servo()
+
+	servo.set_angle(180)
+	time.sleep(2)
+	servo.stop()

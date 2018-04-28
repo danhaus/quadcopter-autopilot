@@ -36,6 +36,7 @@ void setup() {
   pinMode(PWM_SWITCH, OUTPUT);
   pinMode(RXIN, INPUT);
   enableInterrupt(RXIN, Switch, CHANGE); // create event that calls Switch everytime the pin chagnes state
+  Serial.println("Setup done");
 }
 
 void loop() {

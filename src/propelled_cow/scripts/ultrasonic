@@ -24,7 +24,7 @@ def ultrasonic_pub():
         # rospy.loginfo(msg)
         # saturation
         if dist > 32000:
-            dist = 3200
+            dist = 32000
 
         pub.publish(dist)
         rate.sleep()

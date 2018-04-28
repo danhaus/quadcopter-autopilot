@@ -7,7 +7,7 @@ from propelled_cow.pwm_pigpio import PWM
 
 servo_setting = rospy.get_param('servo')
 pwm = PWM(servo_setting['pin'], servo_setting['min'], servo_setting['max'])
-pwm.set_angle(180) # open the grabber
+pwm.set_angle(0) # close the grabber
 
 def callback(data):
 	angle = data.data

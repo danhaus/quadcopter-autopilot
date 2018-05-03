@@ -22,4 +22,4 @@ class Sonar(object):
  
 if __name__ == '__main__':
     print "started"
-    sonar = Sonar(16)
+    sonar = Sonar(18)

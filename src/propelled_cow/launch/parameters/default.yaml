@@ -2,7 +2,7 @@
 # https://pinout.xyz/
 # PWM - 4 pins, but only 2 identical outputs: GPIO 33 & 35 the same, GPIO 12 & 32 the same
 #################################################
-ultrasonic/trigger: 12
+ultrasonic/trigger: 16
 ultrasonic/echo: 18
 throttle: 4
 servo/pin: 17
@@ -14,7 +14,7 @@ accelerometer_compass/rate: 200
 
 # PID
 #################################################
-distance/Kp: 0.01
+distance/Kp: 0.5
 distance/Ki: 0
 distance/Kd: 0
 
@@ -30,6 +30,6 @@ filter/offset: 200 # mm
 
 # min & max length of duty cycle for throttle, used in PID saturation
 PWM/min: 1000 # us
-PWM/max: 1500 # us
+PWM/max: 1550 # us
 servo/min: 750 # us
 servo/max: 2300 # us

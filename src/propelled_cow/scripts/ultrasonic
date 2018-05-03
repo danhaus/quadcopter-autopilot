@@ -11,8 +11,8 @@ import RPi.GPIO as GPIO
 # from propelled_cow.ultrasonic_hc_sr04 import HCSR04
 
 def ultrasonic_pub():
-	#run function before shutdown to clean ports used
-	rospy.on_shutdown(shutdown_ultrasonic)
+    #run function before shutdown to clean ports used
+    rospy.on_shutdown(shutdown_ultrasonic)
 
     TRIGGER = rospy.get_param('ultrasonic/trigger')
     ECHO = rospy.get_param('ultrasonic/echo')

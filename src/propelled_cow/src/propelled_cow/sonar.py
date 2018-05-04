@@ -11,7 +11,6 @@ class Sonar(object):
 
         self.echo = echo
         self.pi = pigpio.pi()
-        self.pi.set_mode(self.echo, pigpio.INPUT)
         self.pi.set_pull_up_down(self.echo, pigpio.PUD_DOWN)
         self.cb1 = pi.callback(echo, pigpio.RISING_EDGE, self.cbf)
 

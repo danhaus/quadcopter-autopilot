@@ -1,16 +1,3 @@
-
-# ***************************************************************************
-# First, the Python module that does the actual work:
-# ***************************************************************************
-
-#!/usr/bin/python3
-# Filename: maxSonarTTY.py
-
-# Reads serial data from Maxbotix ultrasonic rangefinders
-# Gracefully handles most common serial data glitches
-# Use as an importable module with "import MaxSonarTTY"
-# Returns an integer value representing distance to target in millimeters
-
 from time import time
 from serial import Serial
 

@@ -26,8 +26,9 @@ class Sonar(object):
 
     def cbf2(self, gpio, level, tick):
         self.stop = time.time()
-        dif = self.stop - self.start
+        dif = (self.stop - self.start)*(10e6/147)
         print dif
+        time.sleep(0.1)
 
  
 if __name__ == '__main__':

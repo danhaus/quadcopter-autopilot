@@ -1,5 +1,6 @@
-import time
+from datetime import datetime
 import pigpio
+import time
 
 ###########################
 # USING BCM PIN NUMBERING #
@@ -20,19 +21,21 @@ class Sonar(object):
 
     def cbf(self, gpio, level, tick):
         # rising = tick
-        # print(rising)
-        self.start = time.time()
+        # print(level)
+        self.start = datetime.now()
         # return
 
     def cbf2(self, gpio, level, tick):
-        self.stop = time.time()
-        dif = (self.stop - self.start)*(10e6/147)
-        print dif
-        time.sleep(0.1)
+        self.stop = datetime.now()
+        dif = (self.stop - self.start)
+        dif_micro = dif.microseconds
+        # dist = dif_micro // 147
+        print dif_micro
+        # print(level)
 
  
 if __name__ == '__main__':
     print "started"
-    sonar = Sonar(18)
+    sonar = Sonar(23)
     while True:
         pass

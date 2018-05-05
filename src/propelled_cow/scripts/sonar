@@ -20,7 +20,7 @@ while not rospy.is_shutdown():
         # print int(ser.readline().strip())
         dist = int(ser.readline().strip())
 
-        if (dist > 6000) or (dist < 0): # saturate
+        if (dist > 6000) or (dist < 300): # saturate
             dist = 0
 
         pub.publish(dist)

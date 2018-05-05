@@ -24,8 +24,6 @@ void loop()
   //change inches to centimetres
 
   mm = inches * 25.4;
-
-
   Serial.println(mm);
-  delay(50);
+
 }

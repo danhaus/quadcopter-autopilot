@@ -17,7 +17,7 @@ class Controller(object):
 		self.servo_pub = rospy.Publisher('servo_angle', Int16, queue_size=10)
 		rospy.init_node('controller', anonymous=True)
 		self.PWM_limits = rospy.get_param('PWM')
-		self.PWM_current = 1000 # us
+		self.PWM_current = self.PWM_limits['min']
 
 		
 		time.sleep(5) # wait 5 seconds before starting the flight

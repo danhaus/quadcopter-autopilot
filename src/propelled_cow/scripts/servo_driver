@@ -13,8 +13,12 @@ def callback(data):
 	angle = data.data
 	pwm.set_angle(angle)
 
+def shutdown_servo():
+	pwm.stop()
+
 def listener():
 	rospy.init_node('servo_driver', anonymous=True)
+	rospy.on_shutdown(shutdown_servo)
 	rospy.Subscriber('servo_angle', Int16, callback)
 	# spin() simply keeps python from exiting until this node is stopped
 	rospy.spin()

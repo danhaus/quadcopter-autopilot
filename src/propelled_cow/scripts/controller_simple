@@ -19,7 +19,11 @@ class Controller(object):
 		self.PWM_limits = rospy.get_param('PWM')
 		self.PWM_current = 1000 # us
 
+		
 		time.sleep(5) # wait 5 seconds before starting the flight
+
+		self.start = time.time()
+
 
 		rospy.Subscriber('sonar_distance', Int16, self.process_ultrasonic_distance)
 		rospy.spin() # IT MIGHT NOT NEED TO BE HERE
@@ -32,8 +36,11 @@ class Controller(object):
 		self.PWM_current = _PID.saturation(PWM_raw, self.PWM_limits['min'], self.PWM_limits['max'])
 		self.throttle_pub.publish(self.PWM_current)
 
-		if (self.distance >= self.distance_demand):
-			self.servo_pub.publish(170)
+		# drop the bean bag if the drone is higher than 700 mm and the autopilot runs for at lest 10 secs
+		if (self.distance >= (self.distance_demand - 100 )): # if the drone is higher than 800 - 100 mm
+			now = time.time()
+			if (now - self.start > 10): # if the drone is in the air for more than 10 secs
+				self.servo_pub.publish(170)
 
 if __name__ == '__main__':
 	controller = Controller()

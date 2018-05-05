@@ -21,7 +21,7 @@ class Controller(object):
 
 		time.sleep(5) # wait 5 seconds before starting the flight
 
-		rospy.Subscriber('ultrasonic_distance', Int16, self.process_ultrasonic_distance)
+		rospy.Subscriber('sonar_distance', Int16, self.process_ultrasonic_distance)
 		rospy.spin() # IT MIGHT NOT NEED TO BE HERE
 
 	def process_ultrasonic_distance(self, data):

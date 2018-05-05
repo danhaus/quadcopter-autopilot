@@ -33,7 +33,7 @@ class Controller(object):
 		self.throttle_pub.publish(self.PWM_current)
 
 		if (self.distance >= self.distance_demand):
-			self.servo_pub.publish(180)
+			self.servo_pub.publish(170)
 
 if __name__ == '__main__':
 	controller = Controller()

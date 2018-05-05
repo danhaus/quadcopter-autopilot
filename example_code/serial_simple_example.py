@@ -1,4 +1,13 @@
 import serial
-ser = serial.Serial('/dev/ttyACM0', 9600)
+# ser = serial.Serial('/dev/ttyACM0', 9600)
+# ser = serial.Serial('/dev/ttyS0', 9600)
+# ser = serial.Serial('/dev/ttyAMA0', 9600)
+ser = serial.Serial('/dev/ttyUSB0', 9600)
+
+
+
 while True:
-	print int(ser.readline().strip())
+	try:
+		print int(ser.readline().strip())
+	except ValueError:
+		print "ValueError"

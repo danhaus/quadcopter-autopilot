@@ -32,20 +32,20 @@ class HCSR04 (object):
         while GPIO.input(self.GPIO_ECHO) == 0:
             StartTime = time.time()
             if (StartTime - beginningTime) > 1:
-                print "reseting"
+                # print "reseting"
                 GPIO.cleanup()
-                print "cleanup done, sleeping for 1 sec"
-                time.sleep(1)
+                # print "cleanup done, sleeping for 1 sec"
+                time.sleep(0.5)
                 GPIO.setmode(GPIO.BCM)
-                print "mode set"
+                # print "mode set"
                 GPIO.setup(self.GPIO_ECHO, GPIO.OUT)
                 GPIO.setup(self.GPIO_TRIGGER, GPIO.OUT)
                 GPIO.output(self.GPIO_ECHO, False)
-                print "pins set, echo outputs false, waiting 0.5 s"
+                # print "pins set, echo outputs false, waiting 0.5 s"
                 time.sleep(0.5)
 
                 GPIO.cleanup()
-                print "second cleanup done"
+                # print "second cleanup done"
                 GPIO.setmode(GPIO.BCM)
                 GPIO.setup(self.GPIO_ECHO, GPIO.IN)
                 GPIO.setup(self.GPIO_TRIGGER, GPIO.OUT)

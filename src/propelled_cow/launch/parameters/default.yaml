@@ -14,7 +14,7 @@ accelerometer_compass/rate: 200
 
 # PID
 #################################################
-distance/Kp: 0.1
+distance/Kp: 0.15
 distance/Ki: 0
 distance/Kd: 0.02
 

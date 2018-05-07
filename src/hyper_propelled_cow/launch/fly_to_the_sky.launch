@@ -1,0 +1,20 @@
+<launch>
+
+	<!--
+    Parameters
+    -->
+    <rosparam file="$(find hyper_propelled_cow)/launch/parameters/default.yaml" command="load"/>
+
+    <!--
+    Nodes
+    -->
+    <node pkg="hyper_propelled_cow" name="servo_driver" type="servo_driver"/>
+    <node pkg="hyper_propelled_cow" name="sonar" type="sonar"/>
+    <node pkg="hyper_propelled_cow" name="ultrasonic" type="ultrasonic"/>
+    <node pkg="hyper_propelled_cow" name="process_sonar_exponential" type="process_sonar_exponential"/>
+    <node pkg="hyper_propelled_cow" name="controller_simple" type="controller_simple"/>
+    <node pkg="hyper_propelled_cow" name="throttle_driver" type="throttle_driver"/>
+
+
+
+</launch>

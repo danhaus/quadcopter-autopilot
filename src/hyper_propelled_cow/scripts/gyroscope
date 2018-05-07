@@ -1,0 +1,30 @@
+
+#libraries
+import rospy
+#from propelled_cow.LSM303 import LSM303        import l3gd20 file HERE when uploaded to github
+import struct                                    
+
+from geometry_msgs.msg import Vector3
+
+def talker():
+    gyroscope = L3GD20()                       
+    pub = rospy.Publisher('gyroscope', Vector3, queue_size=10)
+    rospy.init_node('gyroscope', anonymous=True)
+    rate = rospy.Rate(200)                      # NEEDS ADJUSTING - same as accelerometer currently
+    while not rospy.is_shutdown():
+        gyro = gyroscope.read()
+
+        gx, gy ,gz = gyro
+        gyrov = Vector3(gx, gy, gz)
+
+        rospy.loginfo(gyrov)
+        pub.publish(gyrov)
+
+        rate.sleep()
+
+if __name__ == '__main__':
+    try:
+        talker()
+    except rospy.ROSInterruptException:
+        gyroscope.cleanupPins()
+        pass

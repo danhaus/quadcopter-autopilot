@@ -1,0 +1,9 @@
+<launch>
+
+	<!--
+    Parameters
+    -->
+    <rosparam file="$(find hyper_propelled_cow)/launch/parameters/default.yaml" command="load"/>
+
+
+</launch>

@@ -1,0 +1,15 @@
+<launch>
+
+	<!--
+    Parameters
+    -->
+    <rosparam file="$(find hyper_propelled_cow)/launch/parameters/default.yaml" command="load"/>
+
+    <!--
+    Nodes
+    -->
+	<node pkg="hyper_propelled_cow" name="ultrasonic_test" type="ultrasonic"/>
+	<node pkg="hyper_propelled_cow" name="process_ultrasonic_test" type="process_ultrasonic"/>
+	<node pkg="hyper_propelled_cow" name="accelerometer_compass_test" type="accelerometer_compass"/>
+
+</launch>

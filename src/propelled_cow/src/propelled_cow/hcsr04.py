@@ -28,8 +28,30 @@ class HCSR04 (object):
         StopTime = time.time()
      
         # save StartTime
+        beginningTime = time.time()
         while GPIO.input(self.GPIO_ECHO) == 0:
             StartTime = time.time()
+            if (StartTime - beginningTime) > 1:
+                print "reseting"
+                GPIO.cleanup()
+                print "cleanup done, sleeping for 1 sec"
+                time.sleep(1)
+                GPIO.setmode(GPIO.BCM)
+                print "mode set"
+                GPIO.setup(self.GPIO_ECHO, GPIO.OUT)
+                GPIO.setup(self.GPIO_TRIGGER, GPIO.OUT)
+                GPIO.output(self.GPIO_ECHO, False)
+                print "pins set, echo outputs false, waiting 0.5 s"
+                time.sleep(0.5)
+
+                GPIO.cleanup()
+                print "second cleanup done"
+                GPIO.setmode(GPIO.BCM)
+                GPIO.setup(self.GPIO_ECHO, GPIO.IN)
+                GPIO.setup(self.GPIO_TRIGGER, GPIO.OUT)
+                beginningTime = time.time()
+                
+                break
      
         # save time of arrival
         while GPIO.input(self.GPIO_ECHO) == 1:
@@ -56,7 +78,7 @@ if __name__ == '__main__':
         while True:
             dist = ultrasonic.getDistance()
             print ("Measured getDistance = %.1f mm" % dist)
-            time.sleep(1)
+            time.sleep(0.1)
  
         # Reset by pressing CTRL + C
     except KeyboardInterrupt:

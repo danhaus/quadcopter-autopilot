@@ -14,7 +14,7 @@ accelerometer_compass/rate: 200
 
 # PID
 #################################################
-distance/Kp: 0.15
+distance/Kp: 0.1
 distance/Ki: 0
 distance/Kd: 0.02
 
@@ -25,7 +25,7 @@ distance_treshold: 1100 # mm
 filter/offset: 200 # mm
 
 # min & max length of duty cycle for throttle, used in PID saturation
-PWM/min: 1400 # us
+PWM/min: 1520 # us
 PWM/max: 1650 # us
 servo/min: 750 # us
 servo/max: 2300 # us

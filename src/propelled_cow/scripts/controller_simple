@@ -13,14 +13,15 @@ class Controller(object):
 		self.distance_demand = rospy.get_param('distance_treshold')
 		self.PID_vals = rospy.get_param('distance')
 		self.controller = _PID.PID(self.PID_vals['Kp'], self.PID_vals['Ki'], self.PID_vals['Kd'], 0, 20) # THE LAST TWO VALUES NEEDS TO BE ADJUSTED
-		self.throttle_pub = rospy.Publisher('PWM_throttle', Int16, queue_size=10)
+		self.throttle_pub = rospy.Publisher('PWM_throttle', Int16, queue_size=2)
 		self.servo_pub = rospy.Publisher('servo_angle', Int16, queue_size=10)
 		rospy.init_node('controller', anonymous=True)
 		self.PWM_limits = rospy.get_param('PWM')
 		self.PWM_current = self.PWM_limits['min']
 
 		# Start countdown.
-		i = 10
+		i = 20
+		rospy.logwarn("Take off counter started.")
 		while (i > 0):
 			rospy.logwarn("Countdown: " + str(i))
 			time.sleep(1)

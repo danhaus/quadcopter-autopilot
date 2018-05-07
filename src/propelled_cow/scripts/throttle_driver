@@ -17,6 +17,7 @@ def listener():
 
 	rospy.init_node('throttle_driver', anonymous=True)
 	rospy.Subscriber('PWM_throttle', Int16, callback)
+	pwm.set_duty_cycle(1000)
 
 	# spin() simply keeps python from exiting until this node is stopped
 	rospy.spin()

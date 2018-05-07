@@ -117,6 +117,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/pi/propelled_cow/build/gtest/cmake_install.cmake")
+  include("/home/pi/propelled_cow/build/hyper_propelled_cow/cmake_install.cmake")
   include("/home/pi/propelled_cow/build/propelled_cow/cmake_install.cmake")
 
 endif()

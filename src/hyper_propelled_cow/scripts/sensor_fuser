@@ -2,7 +2,7 @@
 
 import rospy
 import time
-from std_msgs.msg import Int16, Int32
+from std_msgs.msg import Int16
 
 class Fuser(object):
 
@@ -11,11 +11,14 @@ class Fuser(object):
 
 		self.ultrasonic_val = 0
 		self.sonar_val = 0
-		self.rate = rospy.get_param("main/rate")
 
-		self.rospy.init_node('distance_fused', anonymous=True)
-		rospy.Subscriber('ultrasonic_distance', Int16, update_ultrasonic)
-		rospy.Subscriber('sonar_distance', Int16, update_sonar)
+		rospy.init_node('distance_fused', anonymous=True)
+
+		self.freq = rospy.get_param("main/rate")
+		self.rate = rospy.Rate(self.freq)
+
+		rospy.Subscriber('ultrasonic_distance', Int16, self.update_ultrasonic)
+		rospy.Subscriber('sonar_distance', Int16, self.update_sonar)
 		self.distance_fused_publisher()
 
 
@@ -30,7 +33,7 @@ class Fuser(object):
 			###
 			# LOGIC COMES HERE
 			###
-			self.distance_pub.publish(self.ultrasonic_val)
+			self.distance_pub.publish(self.sonar_val)
 			self.rate.sleep()
 
 if __name__ == '__main__':

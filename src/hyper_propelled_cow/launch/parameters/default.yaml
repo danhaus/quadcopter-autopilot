@@ -9,7 +9,7 @@ servo/pin: 17
 
 # TOPIC RATES [Hz]
 #################################################
-main/rate: 20 # frequency of sensor_fuser that is superior to all the drivers (they have the same frequency)
+main/rate: 50 # frequency of sensor_fuser that is superior to all the drivers (they have the same frequency)
 ultrasonic/rate: 10 # max 33 Hz allowing to read max distance of 10 m
 accelerometer_compass/rate: 200
 

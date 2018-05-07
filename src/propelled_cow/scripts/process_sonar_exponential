@@ -19,6 +19,9 @@ def start():
 	rospy.spin()
 
 def process_ultrasonic(data):
+	global alpha
+	global last_published
+	
 	dist_curr = data.data
 
 	# delete the oldest value

@@ -8,15 +8,12 @@ alpha = 0.3 # constant for exponential filter
 
 readings_cut = [0, 0, 0]
 last_published = 0
-previous_changed = False
 offset = rospy.get_param('filter/offset')
 
 # RATE = rospy.get_param('ultrasonic/rate')
 pub = rospy.Publisher('sonar_distance', Int16, queue_size=10)
 
 def start():
-	
-
 	rospy.init_node('process_sonar', anonymous=True)
 	rospy.Subscriber('sonar_raw', Int16, process_ultrasonic)
 	rospy.spin()

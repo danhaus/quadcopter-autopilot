@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+
+import serial
+import rospy
+import os
+import sys
+from std_msgs.msg import Int16
+
+# ser = serial.Serial('/dev/ttyACM0', 9600)
+# ser = serial.Serial('/dev/ttyS0', 9600)
+# ser = serial.Serial('/dev/ttyAMA0', 9600)
+
+ser = serial.Serial('/dev/ttyUSB0', 9600)
+
+pub = rospy.Publisher('sonar_raw', Int16, queue_size=2)
+rospy.init_node('sonar', anonymous=True)
+
+while not rospy.is_shutdown():
+    try:
+        # print int(ser.readline().strip())
+        dist = int(ser.readline().strip())
+
+        if (dist > 3000) or (dist < 300): # saturate
+            dist = 0
+
+        pub.publish(dist)
+    except ValueError:
+        # print "ValueError"
+        pass

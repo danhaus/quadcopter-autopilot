@@ -1,0 +1,56 @@
+#!/usr/bin/env python
+
+import rospy
+from std_msgs.msg import Int16, Int32
+from statistics import median
+
+readings_cut = [0, 0, 0]
+previous_changed = False
+offset = rospy.get_param('filter/offset')
+
+# RATE = rospy.get_param('ultrasonic/rate')
+pub = rospy.Publisher('ultrasonic_distance', Int16, queue_size=10)
+
+def start():
+	
+
+	rospy.init_node('process_ultrasonic', anonymous=True)
+	rospy.Subscriber('ultrasonic_raw', Int16, process_ultrasonic)
+	rospy.spin()
+
+def process_ultrasonic(data):
+	dist_curr = data.data
+	# delete the oldest value
+	pop = readings_cut.pop(0)
+
+	# filter current reading
+	# cut_value = cut_crazy_values(readings_cut, dist_curr)
+
+	cut_value = dist_curr # debugging
+
+	# update the list with the new cut reading
+	readings_cut.append(cut_value)
+	# apply median filter to cut values
+	median_value = median(readings_cut)
+	# publish
+	pub.publish(median_value)
+
+	# pub.publish(cut_value) # debugging
+
+def cut_crazy_values(data, new_reading):
+	"""
+    If the difference between current and previous value is larger than offset,
+    the previous one. If the previous value was replaced, it returns the current value.
+    """
+	previous_reading = data[-1]
+	if (abs(new_reading - previous_reading)) > offset:
+		if previous_changed == False:
+			previous_changed = True
+			return previous_reading
+		else:
+			previous_changed = False
+			return new_reading
+	return new_reading
+
+if __name__ == '__main__':
+	start()

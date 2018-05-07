@@ -1,8 +1,0 @@
-prefix=/home/pi/propelled_cow/install
-
-Name: libmavconn
-Description: Description of libmavconn
-Version: 0.23.0
-Cflags: -I/home/pi/propelled_cow/install/include -I/usr/include -I/opt/ros/kinetic/include
-Libs: -L/home/pi/propelled_cow/install/lib -lmavconn /usr/lib/arm-linux-gnueabihf/libboost_system.so /usr/lib/arm-linux-gnueabihf/libconsole_bridge.so
-Requires: 

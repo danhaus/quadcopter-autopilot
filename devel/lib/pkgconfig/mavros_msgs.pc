@@ -1,8 +1,0 @@
-prefix=/home/pi/propelled_cow/devel
-
-Name: mavros_msgs
-Description: Description of mavros_msgs
-Version: 0.23.0
-Cflags: -I/home/pi/propelled_cow/devel/include -I/home/pi/propelled_cow/src/mavros/mavros_msgs/include
-Libs: -L/home/pi/propelled_cow/devel/lib 
-Requires: geometry_msgs sensor_msgs geographic_msgs message_runtime std_msgs

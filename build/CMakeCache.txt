@@ -17,24 +17,6 @@
 //Build shared libraries (DLLs).
 BUILD_SHARED_LIBS:BOOL=ON
 
-//The directory containing a CMake configuration file for Boost.
-Boost_DIR:PATH=Boost_DIR-NOTFOUND
-
-//Path to a file.
-Boost_INCLUDE_DIR:PATH=/usr/include
-
-//Boost library directory DEBUG
-Boost_LIBRARY_DIR_DEBUG:PATH=/usr/lib/arm-linux-gnueabihf
-
-//Boost library directory RELEASE
-Boost_LIBRARY_DIR_RELEASE:PATH=/usr/lib/arm-linux-gnueabihf
-
-//Boost system library (debug)
-Boost_SYSTEM_LIBRARY_DEBUG:FILEPATH=/usr/lib/arm-linux-gnueabihf/libboost_system.so
-
-//Boost system library (release)
-Boost_SYSTEM_LIBRARY_RELEASE:FILEPATH=/usr/lib/arm-linux-gnueabihf/libboost_system.so
-
 //List of ';' separated packages to exclude
 CATKIN_BLACKLIST_PACKAGES:STRING=
 
@@ -210,18 +192,6 @@ EMPY_EXECUTABLE:FILEPATH=/usr/bin/empy
 //Empy script
 EMPY_SCRIPT:STRING=/usr/bin/empy
 
-//The directory containing a CMake configuration file for Eigen3.
-Eigen3_DIR:PATH=/usr/lib/cmake/eigen3
-
-//Path to a file.
-GEOGRAPHICLIB_GEOID_PATH:PATH=GEOGRAPHICLIB_GEOID_PATH-NOTFOUND
-
-//Path to a file.
-GEOGRAPHICLIB_GRAVITY_PATH_:PATH=GEOGRAPHICLIB_GRAVITY_PATH_-NOTFOUND
-
-//Path to a file.
-GEOGRAPHICLIB_MAGNETIC_PATH_:PATH=GEOGRAPHICLIB_MAGNETIC_PATH_-NOTFOUND
-
 //Path to a file.
 GTEST_INCLUDE_DIR:PATH=/usr/include
 
@@ -237,12 +207,6 @@ GTEST_MAIN_LIBRARY:FILEPATH=GTEST_MAIN_LIBRARY-NOTFOUND
 //Path to a library.
 GTEST_MAIN_LIBRARY_DEBUG:FILEPATH=GTEST_MAIN_LIBRARY_DEBUG-NOTFOUND
 
-//Path to a library.
-GeographicLib_LIBRARIES:FILEPATH=/usr/lib/arm-linux-gnueabihf/libGeographic.so
-
-//Path to a library.
-GeographicLib_LIBRARIES_DEBIAN:FILEPATH=/usr/lib/arm-linux-gnueabihf/libGeographic.so
-
 //lsb_release executable was found
 LSB_FOUND:BOOL=TRUE
 
@@ -251,9 +215,6 @@ LSB_RELEASE_EXECUTABLE:FILEPATH=/usr/bin/lsb_release
 
 //Path to a program.
 NOSETESTS:FILEPATH=/usr/bin/nosetests-2.7
-
-//pkg-config executable
-PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
 //Path to a program.
 PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python
@@ -285,68 +246,11 @@ _CATKIN_GTEST_INCLUDE:FILEPATH=/usr/include/gtest/gtest.h
 //Path to a file.
 _CATKIN_GTEST_SRC:FILEPATH=/usr/src/gtest/src/gtest.cc
 
-//The directory containing a CMake configuration file for actionlib.
-actionlib_DIR:PATH=/opt/ros/kinetic/share/actionlib/cmake
-
-//The directory containing a CMake configuration file for actionlib_msgs.
-actionlib_msgs_DIR:PATH=/opt/ros/kinetic/share/actionlib_msgs/cmake
-
-//The directory containing a CMake configuration file for angles.
-angles_DIR:PATH=/opt/ros/kinetic/share/angles/cmake
-
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/kinetic/share/catkin/cmake
 
-//The directory containing a CMake configuration file for class_loader.
-class_loader_DIR:PATH=/opt/ros/kinetic/share/class_loader/cmake
-
-//The directory containing a CMake configuration file for console_bridge.
-console_bridge_DIR:PATH=/usr/lib/arm-linux-gnueabihf/console_bridge/cmake
-
-//The directory containing a CMake configuration file for control_msgs.
-control_msgs_DIR:PATH=/opt/ros/kinetic/share/control_msgs/cmake
-
-//The directory containing a CMake configuration file for control_toolbox.
-control_toolbox_DIR:PATH=/opt/ros/kinetic/share/control_toolbox/cmake
-
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/kinetic/share/cpp_common/cmake
-
-//The directory containing a CMake configuration file for diagnostic_msgs.
-diagnostic_msgs_DIR:PATH=/opt/ros/kinetic/share/diagnostic_msgs/cmake
-
-//The directory containing a CMake configuration file for diagnostic_updater.
-diagnostic_updater_DIR:PATH=/opt/ros/kinetic/share/diagnostic_updater/cmake
-
-//The directory containing a CMake configuration file for dynamic_reconfigure.
-dynamic_reconfigure_DIR:PATH=/opt/ros/kinetic/share/dynamic_reconfigure/cmake
-
-//The directory containing a CMake configuration file for eigen_conversions.
-eigen_conversions_DIR:PATH=/opt/ros/kinetic/share/eigen_conversions/cmake
-
-//The directory containing a CMake configuration file for gencpp.
-gencpp_DIR:PATH=/opt/ros/kinetic/share/gencpp/cmake
-
-//The directory containing a CMake configuration file for geneus.
-geneus_DIR:PATH=/opt/ros/kinetic/share/geneus/cmake
-
-//The directory containing a CMake configuration file for genlisp.
-genlisp_DIR:PATH=/opt/ros/kinetic/share/genlisp/cmake
-
-//The directory containing a CMake configuration file for genmsg.
-genmsg_DIR:PATH=/opt/ros/kinetic/share/genmsg/cmake
-
-//The directory containing a CMake configuration file for gennodejs.
-gennodejs_DIR:PATH=/opt/ros/kinetic/share/gennodejs/cmake
-
-//The directory containing a CMake configuration file for genpy.
-genpy_DIR:PATH=/opt/ros/kinetic/share/genpy/cmake
-
-//The directory containing a CMake configuration file for geographic_msgs.
-geographic_msgs_DIR:PATH=/opt/ros/kinetic/share/geographic_msgs/cmake
-
-//The directory containing a CMake configuration file for geometry_msgs.
-geometry_msgs_DIR:PATH=/opt/ros/kinetic/share/geometry_msgs/cmake
 
 //Value Computed by CMake
 gtest_BINARY_DIR:STATIC=/home/pi/propelled_cow/build/gtest
@@ -376,83 +280,8 @@ gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 //Path to a library.
 lib:FILEPATH=/opt/ros/kinetic/lib/libxmlrpcpp.so
 
-//Value Computed by CMake
-libmavconn_BINARY_DIR:STATIC=/home/pi/propelled_cow/build/mavros/libmavconn
-
-//The directory containing a CMake configuration file for libmavconn.
-libmavconn_DIR:PATH=/home/pi/propelled_cow/devel/share/libmavconn/cmake
-
-//Value Computed by CMake
-libmavconn_SOURCE_DIR:STATIC=/home/pi/propelled_cow/src/mavros/libmavconn
-
-//Dependencies for the target
-mavconn_LIB_DEPENDS:STATIC=general;/usr/lib/arm-linux-gnueabihf/libboost_system.so;general;/usr/lib/arm-linux-gnueabihf/libconsole_bridge.so;
-
-//The directory containing a CMake configuration file for mavlink.
-mavlink_DIR:PATH=/opt/ros/kinetic/share/mavlink/cmake
-
-//Value Computed by CMake
-mavros_BINARY_DIR:STATIC=/home/pi/propelled_cow/build/mavros/mavros
-
-//The directory containing a CMake configuration file for mavros.
-mavros_DIR:PATH=/home/pi/propelled_cow/devel/share/mavros/cmake
-
-//Dependencies for the target
-mavros_LIB_DEPENDS:STATIC=general;atomic;general;/usr/lib/arm-linux-gnueabihf/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/arm-linux-gnueabihf/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/arm-linux-gnueabihf/libpython2.7.so;general;/usr/lib/arm-linux-gnueabihf/libboost_program_options.so;general;/usr/lib/arm-linux-gnueabihf/libtinyxml.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/arm-linux-gnueabihf/libboost_filesystem.so;general;/usr/lib/arm-linux-gnueabihf/libboost_signals.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libtf2.so;general;mavconn;general;/opt/ros/kinetic/lib/librosconsole_bridge.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/arm-linux-gnueabihf/liblog4cxx.so;general;/usr/lib/arm-linux-gnueabihf/libboost_regex.so;general;/opt/ros/kinetic/lib/libeigen_conversions.so;general;/opt/ros/kinetic/lib/liborocos-kdl.so.1.3.0;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/arm-linux-gnueabihf/libboost_system.so;general;/usr/lib/arm-linux-gnueabihf/libboost_thread.so;general;/usr/lib/arm-linux-gnueabihf/libboost_chrono.so;general;/usr/lib/arm-linux-gnueabihf/libboost_date_time.so;general;/usr/lib/arm-linux-gnueabihf/libboost_atomic.so;general;/usr/lib/arm-linux-gnueabihf/libpthread.so;general;/usr/lib/arm-linux-gnueabihf/libconsole_bridge.so;general;/usr/lib/arm-linux-gnueabihf/libboost_system.so;general;/usr/lib/arm-linux-gnueabihf/libGeographic.so;
-
-//Value Computed by CMake
-mavros_SOURCE_DIR:STATIC=/home/pi/propelled_cow/src/mavros/mavros
-
-//Value Computed by CMake
-mavros_extras_BINARY_DIR:STATIC=/home/pi/propelled_cow/build/mavros/mavros_extras
-
-//The directory containing a CMake configuration file for mavros_extras.
-mavros_extras_DIR:PATH=/home/pi/propelled_cow/devel/share/mavros_extras/cmake
-
-//Dependencies for the target
-mavros_extras_LIB_DEPENDS:STATIC=general;mavros;general;/usr/lib/arm-linux-gnueabihf/libGeographic.so;general;/usr/lib/arm-linux-gnueabihf/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/arm-linux-gnueabihf/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/arm-linux-gnueabihf/libpython2.7.so;general;/usr/lib/arm-linux-gnueabihf/libboost_program_options.so;general;/usr/lib/arm-linux-gnueabihf/libtinyxml.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/arm-linux-gnueabihf/libboost_filesystem.so;general;/usr/lib/arm-linux-gnueabihf/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/arm-linux-gnueabihf/liblog4cxx.so;general;/usr/lib/arm-linux-gnueabihf/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libtf2.so;general;mavconn;general;/opt/ros/kinetic/lib/libeigen_conversions.so;general;/opt/ros/kinetic/lib/liborocos-kdl.so.1.3.0;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/arm-linux-gnueabihf/libboost_system.so;general;/usr/lib/arm-linux-gnueabihf/libboost_thread.so;general;/usr/lib/arm-linux-gnueabihf/libboost_chrono.so;general;/usr/lib/arm-linux-gnueabihf/libboost_date_time.so;general;/usr/lib/arm-linux-gnueabihf/libboost_atomic.so;general;/usr/lib/arm-linux-gnueabihf/libpthread.so;general;/usr/lib/arm-linux-gnueabihf/libconsole_bridge.so;general;mavros;general;/usr/lib/arm-linux-gnueabihf/libGeographic.so;general;/usr/lib/arm-linux-gnueabihf/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/arm-linux-gnueabihf/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/arm-linux-gnueabihf/libpython2.7.so;general;/usr/lib/arm-linux-gnueabihf/libboost_program_options.so;general;mavconn;general;/opt/ros/kinetic/lib/libeigen_conversions.so;general;/opt/ros/kinetic/lib/liborocos-kdl.so.1.3.0;general;/opt/ros/kinetic/lib/liburdf.so;general;/usr/lib/arm-linux-gnueabihf/liburdfdom_sensor.so;general;/usr/lib/arm-linux-gnueabihf/liburdfdom_model_state.so;general;/usr/lib/arm-linux-gnueabihf/liburdfdom_model.so;general;/usr/lib/arm-linux-gnueabihf/liburdfdom_world.so;general;/usr/lib/arm-linux-gnueabihf/libtinyxml.so;general;/opt/ros/kinetic/lib/librosconsole_bridge.so;general;/opt/ros/kinetic/lib/libtf.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/arm-linux-gnueabihf/libboost_filesystem.so;general;/usr/lib/arm-linux-gnueabihf/libboost_signals.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/arm-linux-gnueabihf/liblog4cxx.so;general;/usr/lib/arm-linux-gnueabihf/libboost_regex.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/arm-linux-gnueabihf/libboost_system.so;general;/usr/lib/arm-linux-gnueabihf/libboost_thread.so;general;/usr/lib/arm-linux-gnueabihf/libboost_chrono.so;general;/usr/lib/arm-linux-gnueabihf/libboost_date_time.so;general;/usr/lib/arm-linux-gnueabihf/libboost_atomic.so;general;/usr/lib/arm-linux-gnueabihf/libpthread.so;general;/usr/lib/arm-linux-gnueabihf/libconsole_bridge.so;
-
-//Value Computed by CMake
-mavros_extras_SOURCE_DIR:STATIC=/home/pi/propelled_cow/src/mavros/mavros_extras
-
-//Value Computed by CMake
-mavros_msgs_BINARY_DIR:STATIC=/home/pi/propelled_cow/build/mavros/mavros_msgs
-
-//The directory containing a CMake configuration file for mavros_msgs.
-mavros_msgs_DIR:PATH=/home/pi/propelled_cow/devel/share/mavros_msgs/cmake
-
-//Value Computed by CMake
-mavros_msgs_SOURCE_DIR:STATIC=/home/pi/propelled_cow/src/mavros/mavros_msgs
-
-//Dependencies for the target
-mavros_plugins_LIB_DEPENDS:STATIC=general;mavros;general;/usr/lib/arm-linux-gnueabihf/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/arm-linux-gnueabihf/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/arm-linux-gnueabihf/libpython2.7.so;general;/usr/lib/arm-linux-gnueabihf/libboost_program_options.so;general;/usr/lib/arm-linux-gnueabihf/libtinyxml.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/arm-linux-gnueabihf/libboost_filesystem.so;general;/usr/lib/arm-linux-gnueabihf/libboost_signals.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libtf2.so;general;mavconn;general;/opt/ros/kinetic/lib/librosconsole_bridge.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/arm-linux-gnueabihf/liblog4cxx.so;general;/usr/lib/arm-linux-gnueabihf/libboost_regex.so;general;/opt/ros/kinetic/lib/libeigen_conversions.so;general;/opt/ros/kinetic/lib/liborocos-kdl.so.1.3.0;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/arm-linux-gnueabihf/libboost_system.so;general;/usr/lib/arm-linux-gnueabihf/libboost_thread.so;general;/usr/lib/arm-linux-gnueabihf/libboost_chrono.so;general;/usr/lib/arm-linux-gnueabihf/libboost_date_time.so;general;/usr/lib/arm-linux-gnueabihf/libboost_atomic.so;general;/usr/lib/arm-linux-gnueabihf/libpthread.so;general;/usr/lib/arm-linux-gnueabihf/libconsole_bridge.so;
-
-//Dependencies for the target
-mavros_sitl_test_LIB_DEPENDS:STATIC=general;/usr/lib/arm-linux-gnueabihf/libboost_system.so;general;mavros;general;/usr/lib/arm-linux-gnueabihf/libGeographic.so;general;/usr/lib/arm-linux-gnueabihf/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/arm-linux-gnueabihf/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/arm-linux-gnueabihf/libpython2.7.so;general;/usr/lib/arm-linux-gnueabihf/libboost_program_options.so;general;mavconn;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/libeigen_conversions.so;general;/opt/ros/kinetic/lib/liborocos-kdl.so.1.3.0;general;/opt/ros/kinetic/lib/libcontrol_toolbox.so;general;/usr/lib/arm-linux-gnueabihf/libtinyxml.so;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/kinetic/lib/librealtime_tools.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/arm-linux-gnueabihf/libboost_filesystem.so;general;/usr/lib/arm-linux-gnueabihf/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/arm-linux-gnueabihf/liblog4cxx.so;general;/usr/lib/arm-linux-gnueabihf/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/arm-linux-gnueabihf/libboost_system.so;general;/usr/lib/arm-linux-gnueabihf/libboost_thread.so;general;/usr/lib/arm-linux-gnueabihf/libboost_chrono.so;general;/usr/lib/arm-linux-gnueabihf/libboost_date_time.so;general;/usr/lib/arm-linux-gnueabihf/libboost_atomic.so;general;/usr/lib/arm-linux-gnueabihf/libpthread.so;general;/usr/lib/arm-linux-gnueabihf/libconsole_bridge.so;
-
-//The directory containing a CMake configuration file for message_filters.
-message_filters_DIR:PATH=/opt/ros/kinetic/share/message_filters/cmake
-
-//The directory containing a CMake configuration file for message_generation.
-message_generation_DIR:PATH=/opt/ros/kinetic/share/message_generation/cmake
-
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/kinetic/share/message_runtime/cmake
-
-//Value Computed by CMake
-multiwii_BINARY_DIR:STATIC=/home/pi/propelled_cow/build/ros-multiwii
-
-//Value Computed by CMake
-multiwii_SOURCE_DIR:STATIC=/home/pi/propelled_cow/src/ros-multiwii
-
-//The directory containing a CMake configuration file for nav_msgs.
-nav_msgs_DIR:PATH=/opt/ros/kinetic/share/nav_msgs/cmake
-
-//Path to a library.
-onelib:FILEPATH=/usr/lib/arm-linux-gnueabihf/libconsole_bridge.so
-
-//The directory containing a CMake configuration file for pluginlib.
-pluginlib_DIR:PATH=/opt/ros/kinetic/share/pluginlib/cmake
 
 //Value Computed by CMake
 propelled_cow_BINARY_DIR:STATIC=/home/pi/propelled_cow/build/propelled_cow
@@ -460,14 +289,8 @@ propelled_cow_BINARY_DIR:STATIC=/home/pi/propelled_cow/build/propelled_cow
 //Value Computed by CMake
 propelled_cow_SOURCE_DIR:STATIC=/home/pi/propelled_cow/src/propelled_cow
 
-//The directory containing a CMake configuration file for realtime_tools.
-realtime_tools_DIR:PATH=/opt/ros/kinetic/share/realtime_tools/cmake
-
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/kinetic/share/rosconsole/cmake
-
-//The directory containing a CMake configuration file for rosconsole_bridge.
-rosconsole_bridge_DIR:PATH=/opt/ros/kinetic/share/rosconsole_bridge/cmake
 
 //The directory containing a CMake configuration file for roscpp.
 roscpp_DIR:PATH=/opt/ros/kinetic/share/roscpp/cmake
@@ -478,17 +301,8 @@ roscpp_serialization_DIR:PATH=/opt/ros/kinetic/share/roscpp_serialization/cmake
 //The directory containing a CMake configuration file for roscpp_traits.
 roscpp_traits_DIR:PATH=/opt/ros/kinetic/share/roscpp_traits/cmake
 
-//The directory containing a CMake configuration file for rosgraph.
-rosgraph_DIR:PATH=/opt/ros/kinetic/share/rosgraph/cmake
-
 //The directory containing a CMake configuration file for rosgraph_msgs.
 rosgraph_msgs_DIR:PATH=/opt/ros/kinetic/share/rosgraph_msgs/cmake
-
-//The directory containing a CMake configuration file for roslib.
-roslib_DIR:PATH=/opt/ros/kinetic/share/roslib/cmake
-
-//The directory containing a CMake configuration file for rospack.
-rospack_DIR:PATH=/opt/ros/kinetic/share/rospack/cmake
 
 //The directory containing a CMake configuration file for rospy.
 rospy_DIR:PATH=/opt/ros/kinetic/share/rospy/cmake
@@ -496,50 +310,8 @@ rospy_DIR:PATH=/opt/ros/kinetic/share/rospy/cmake
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/kinetic/share/rostime/cmake
 
-//The directory containing a CMake configuration file for sensor_msgs.
-sensor_msgs_DIR:PATH=/opt/ros/kinetic/share/sensor_msgs/cmake
-
 //The directory containing a CMake configuration file for std_msgs.
 std_msgs_DIR:PATH=/opt/ros/kinetic/share/std_msgs/cmake
-
-//The directory containing a CMake configuration file for std_srvs.
-std_srvs_DIR:PATH=/opt/ros/kinetic/share/std_srvs/cmake
-
-//Value Computed by CMake
-test_mavros_BINARY_DIR:STATIC=/home/pi/propelled_cow/build/mavros/test_mavros
-
-//Value Computed by CMake
-test_mavros_SOURCE_DIR:STATIC=/home/pi/propelled_cow/src/mavros/test_mavros
-
-//The directory containing a CMake configuration file for tf2.
-tf2_DIR:PATH=/opt/ros/kinetic/share/tf2/cmake
-
-//The directory containing a CMake configuration file for tf2_eigen.
-tf2_eigen_DIR:PATH=/opt/ros/kinetic/share/tf2_eigen/cmake
-
-//The directory containing a CMake configuration file for tf2_msgs.
-tf2_msgs_DIR:PATH=/opt/ros/kinetic/share/tf2_msgs/cmake
-
-//The directory containing a CMake configuration file for tf2_py.
-tf2_py_DIR:PATH=/opt/ros/kinetic/share/tf2_py/cmake
-
-//The directory containing a CMake configuration file for tf2_ros.
-tf2_ros_DIR:PATH=/opt/ros/kinetic/share/tf2_ros/cmake
-
-//The directory containing a CMake configuration file for tf.
-tf_DIR:PATH=/opt/ros/kinetic/share/tf/cmake
-
-//The directory containing a CMake configuration file for trajectory_msgs.
-trajectory_msgs_DIR:PATH=/opt/ros/kinetic/share/trajectory_msgs/cmake
-
-//The directory containing a CMake configuration file for urdf.
-urdf_DIR:PATH=/opt/ros/kinetic/share/urdf/cmake
-
-//The directory containing a CMake configuration file for uuid_msgs.
-uuid_msgs_DIR:PATH=/opt/ros/kinetic/share/uuid_msgs/cmake
-
-//The directory containing a CMake configuration file for visualization_msgs.
-visualization_msgs_DIR:PATH=/opt/ros/kinetic/share/visualization_msgs/cmake
 
 //The directory containing a CMake configuration file for xmlrpcpp.
 xmlrpcpp_DIR:PATH=/opt/ros/kinetic/share/xmlrpcpp/cmake
@@ -549,18 +321,6 @@ xmlrpcpp_DIR:PATH=/opt/ros/kinetic/share/xmlrpcpp/cmake
 # INTERNAL cache entries
 ########################
 
-//ADVANCED property for variable: Boost_DIR
-Boost_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Boost_INCLUDE_DIR
-Boost_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Boost_LIBRARY_DIR_DEBUG
-Boost_LIBRARY_DIR_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Boost_LIBRARY_DIR_RELEASE
-Boost_LIBRARY_DIR_RELEASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Boost_SYSTEM_LIBRARY_DEBUG
-Boost_SYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Boost_SYSTEM_LIBRARY_RELEASE
-Boost_SYSTEM_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //catkin environment
 CATKIN_ENV:INTERNAL=/home/pi/propelled_cow/build/catkin_generated/env_cached.sh
 CATKIN_TEST_RESULTS_DIR:INTERNAL=/home/pi/propelled_cow/build/test_results
@@ -697,46 +457,6 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-//Test COMPILER_SUPPORTS_STD_CXX14
-COMPILER_SUPPORTS_STD_CXX14:INTERNAL=1
-Eigen_CFLAGS:INTERNAL=-I/usr/include/eigen3
-Eigen_CFLAGS_I:INTERNAL=
-Eigen_CFLAGS_OTHER:INTERNAL=
-Eigen_FOUND:INTERNAL=1
-Eigen_INCLUDEDIR:INTERNAL=
-Eigen_INCLUDE_DIRS:INTERNAL=/usr/include/eigen3
-Eigen_LDFLAGS:INTERNAL=
-Eigen_LDFLAGS_OTHER:INTERNAL=
-Eigen_LIBDIR:INTERNAL=
-Eigen_LIBRARIES:INTERNAL=
-Eigen_LIBRARY_DIRS:INTERNAL=
-Eigen_LIBS:INTERNAL=
-Eigen_LIBS_L:INTERNAL=
-Eigen_LIBS_OTHER:INTERNAL=
-Eigen_LIBS_PATHS:INTERNAL=
-Eigen_PREFIX:INTERNAL=/usr
-Eigen_STATIC_CFLAGS:INTERNAL=-I/usr/include/eigen3
-Eigen_STATIC_CFLAGS_I:INTERNAL=
-Eigen_STATIC_CFLAGS_OTHER:INTERNAL=
-Eigen_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/eigen3
-Eigen_STATIC_LDFLAGS:INTERNAL=
-Eigen_STATIC_LDFLAGS_OTHER:INTERNAL=
-Eigen_STATIC_LIBDIR:INTERNAL=
-Eigen_STATIC_LIBRARIES:INTERNAL=
-Eigen_STATIC_LIBRARY_DIRS:INTERNAL=
-Eigen_STATIC_LIBS:INTERNAL=
-Eigen_STATIC_LIBS_L:INTERNAL=
-Eigen_STATIC_LIBS_OTHER:INTERNAL=
-Eigen_STATIC_LIBS_PATHS:INTERNAL=
-Eigen_VERSION:INTERNAL=3.2.92
-Eigen_eigen3_INCLUDEDIR:INTERNAL=
-Eigen_eigen3_LIBDIR:INTERNAL=
-Eigen_eigen3_PREFIX:INTERNAL=
-Eigen_eigen3_VERSION:INTERNAL=
-//Details about finding GeographicLib
-FIND_PACKAGE_MESSAGE_DETAILS_GeographicLib:INTERNAL=[/usr/lib/arm-linux-gnueabihf][/usr/lib/arm-linux-gnueabihf/libGeographic.so][/usr/lib/../include][v()]
-//Details about finding PkgConfig
-FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.1()]
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python][v2.7.12()]
 //Details about finding Threads
@@ -756,63 +476,10 @@ GTEST_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GTEST_MAIN_LIBRARY_DEBUG
 GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GeographicLib_LIBRARIES
-GeographicLib_LIBRARIES-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
-PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //This needs to be in PYTHONPATH when 'setup.py install' is called.
 //  And it needs to match.  But setuptools won't tell us where
 // it will install things.
 PYTHON_INSTALL_DIR:INTERNAL=lib/python2.7/dist-packages
-//Components requested for this build tree.
-_Boost_COMPONENTS_SEARCHED:INTERNAL=system
-//Last used Boost_INCLUDE_DIR value.
-_Boost_INCLUDE_DIR_LAST:INTERNAL=/usr/include
-//Last used Boost_LIBRARY_DIR_DEBUG value.
-_Boost_LIBRARY_DIR_DEBUG_LAST:INTERNAL=/usr/lib/arm-linux-gnueabihf
-//Last used Boost_LIBRARY_DIR_RELEASE value.
-_Boost_LIBRARY_DIR_RELEASE_LAST:INTERNAL=/usr/lib/arm-linux-gnueabihf
-//Last used Boost_NAMESPACE value.
-_Boost_NAMESPACE_LAST:INTERNAL=boost
-//Last used Boost_USE_MULTITHREADED value.
-_Boost_USE_MULTITHREADED_LAST:INTERNAL=TRUE
-__pkg_config_checked_Eigen:INTERNAL=1
-__pkg_config_checked_msp:INTERNAL=1
-msp_CFLAGS:INTERNAL=-I/opt/ros/kinetic/include/
-msp_CFLAGS_I:INTERNAL=
-msp_CFLAGS_OTHER:INTERNAL=
-msp_FOUND:INTERNAL=1
-msp_INCLUDEDIR:INTERNAL=/opt/ros/kinetic/include/
-msp_INCLUDE_DIRS:INTERNAL=/opt/ros/kinetic/include/
-msp_LDFLAGS:INTERNAL=-L/opt/ros/kinetic/lib;-lmsp;-lmsp_fcu;-lmspclient;-lmsp_msg_print
-msp_LDFLAGS_OTHER:INTERNAL=
-msp_LIBDIR:INTERNAL=/opt/ros/kinetic/lib
-msp_LIBRARIES:INTERNAL=msp;msp_fcu;mspclient;msp_msg_print
-msp_LIBRARY_DIRS:INTERNAL=/opt/ros/kinetic/lib
-msp_LIBS:INTERNAL=
-msp_LIBS_L:INTERNAL=
-msp_LIBS_OTHER:INTERNAL=
-msp_LIBS_PATHS:INTERNAL=
-msp_PREFIX:INTERNAL=/opt/ros/kinetic
-msp_STATIC_CFLAGS:INTERNAL=-I/opt/ros/kinetic/include/
-msp_STATIC_CFLAGS_I:INTERNAL=
-msp_STATIC_CFLAGS_OTHER:INTERNAL=
-msp_STATIC_INCLUDE_DIRS:INTERNAL=/opt/ros/kinetic/include/
-msp_STATIC_LDFLAGS:INTERNAL=-L/opt/ros/kinetic/lib;-lmsp;-lmsp_fcu;-lmspclient;-lmsp_msg_print
-msp_STATIC_LDFLAGS_OTHER:INTERNAL=
-msp_STATIC_LIBDIR:INTERNAL=
-msp_STATIC_LIBRARIES:INTERNAL=msp;msp_fcu;mspclient;msp_msg_print
-msp_STATIC_LIBRARY_DIRS:INTERNAL=/opt/ros/kinetic/lib
-msp_STATIC_LIBS:INTERNAL=
-msp_STATIC_LIBS_L:INTERNAL=
-msp_STATIC_LIBS_OTHER:INTERNAL=
-msp_STATIC_LIBS_PATHS:INTERNAL=
-msp_VERSION:INTERNAL=
-msp_msp_INCLUDEDIR:INTERNAL=
-msp_msp_LIBDIR:INTERNAL=
-msp_msp_PREFIX:INTERNAL=
-msp_msp_VERSION:INTERNAL=
-prefix_result:INTERNAL=
 

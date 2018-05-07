@@ -9,8 +9,13 @@ class Fuser(object):
 	def __init__(self):
 		self.distance_pub = rospy.Publisher('distance_fused', Int16, queue_size=2)
 
-		self.ultrasonic_val = 0
-		self.sonar_val = 0
+		self.ultrasonic_cur = 0
+		self.sonar_cur = 0
+		self.ultrasonic_prev = 0
+		self.sonar_prev = 0
+
+		self.ultrasonic_rate = rospy.get_param('ultrasonic/rate')
+		self.sonar_rate = 20 # Hz
 
 		rospy.init_node('distance_fused', anonymous=True)
 
@@ -21,19 +26,31 @@ class Fuser(object):
 		rospy.Subscriber('sonar_distance', Int16, self.update_sonar)
 		self.distance_fused_publisher()
 
+		
+
 
 	def update_ultrasonic(self, data):
-		self.ultrasonic_val = data.data
+		self.ultrasonic_prev = self.ultrasonic_cur
+		self.ultrasonic_cur = data.data
 
 	def update_sonar(self, data):
-		self.sonar_val = data.data
+		self.sonar_prev = self.sonar_cur
+		self.sonar_cur = data.data
+
+	def get_inconsistency(self, current, previous, freq):
+		diff = abs(current - previous)
+		inconsistency = diff * freq # the lower inconsistency the better
+		return inconsistency
+
 
 	def distance_fused_publisher(self):
 		while not rospy.is_shutdown():
 			###
 			# LOGIC COMES HERE
 			###
-			self.distance_pub.publish(self.sonar_val)
+			ultrasonic_incosistency = self.get_inconsistency(self.ultrasonic_cur, self.ultrasonic_prev, self.ultrasonic_rate)
+
+			self.distance_pub.publish(self.ultrasonic_incosistency)
 			self.rate.sleep()
 
 if __name__ == '__main__':

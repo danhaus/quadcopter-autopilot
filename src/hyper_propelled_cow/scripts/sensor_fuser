@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+
+import rospy
+import time
+from std_msgs.msg import Int16, Int32
+
+class Fuser(object):
+
+	def __init__(self):
+		self.distance_pub = rospy.Publisher('distance_fused', Int16, queue_size=2)
+
+		self.ultrasonic_val = 0
+		self.sonar_val = 0
+		self.rate = rospy.get_param("main/rate")
+
+		self.rospy.init_node('distance_fused', anonymous=True)
+		rospy.Subscriber('ultrasonic_distance', Int16, update_ultrasonic)
+		rospy.Subscriber('sonar_distance', Int16, update_sonar)
+		self.distance_fused_publisher()
+
+
+	def update_ultrasonic(self, data):
+		self.ultrasonic_val = data.data
+
+	def update_sonar(self, data):
+		self.sonar_val = data.data
+
+	def distance_fused_publisher(self):
+		while not rospy.is_shutdown():
+			###
+			# LOGIC COMES HERE
+			###
+			self.distance_pub.publish(self.ultrasonic_val)
+			self.rate.sleep()
+
+if __name__ == '__main__':
+	try:
+		Fuser()
+	except rospy.ROSInterruptException:
+		pass

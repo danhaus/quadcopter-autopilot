@@ -21,7 +21,7 @@ distance/Kd: 0.02
 
 # LIMITS / CONSTANTS
 #################################################
-distance_treshold: 1200 # mm
+distance_treshold: 1100 # mm
 filter/offset: 200 # mm
 
 # min & max length of duty cycle for throttle, used in PID saturation

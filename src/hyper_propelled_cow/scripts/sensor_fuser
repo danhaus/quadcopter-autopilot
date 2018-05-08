@@ -62,20 +62,20 @@ class Fuser(object):
 			###
 			# FUSING LOGIC BELOW
 			###
-			ultrasonic_alive = is_alive(self.ultrasonic_cur, self.ultrasonic_last_update)
-			sonar_alive = is_alive(self.sonar_cur, self.sonar_last_update)
+			ultrasonic_alive = self.is_alive(self.ultrasonic_cur, self.ultrasonic_last_update)
+			sonar_alive = self.is_alive(self.sonar_cur, self.sonar_last_update)
 			ultrasonic_incosistency = self.get_inconsistency(self.ultrasonic_cur, self.ultrasonic_prev, self.ultrasonic_rate)
 			sonar_incosistency = self.get_inconsistency(self.sonar_cur, self.sonar_prev, self.sonar_rate)
 
 			if (ultrasonic_alive and sonar_alive):
 				if ultrasonic_incosistency < sonar_incosistency:
-					self.distance_pub.publish(ultrasonic_cur)
+					self.distance_pub.publish(self.ultrasonic_cur)
 				else:
-					self.distance_pub.publish(sonar_cur)
+					self.distance_pub.publish(self.sonar_cur)
 			elif (ultrasonic_alive):
-				self.distance_pub.publish(ultrasonic_cur)
-			elif:
-				self.distance_pub.publish(sonar_cur)
+				self.distance_pub.publish(self.ultrasonic_cur)
+			elif (sonar_alive):
+				self.distance_pub.publish(self.sonar_cur)
 			else:
 				self.distance_pub.publish(self.distance_demand + 10) # if both sensors are broken, force the drone to land
 			self.rate.sleep()

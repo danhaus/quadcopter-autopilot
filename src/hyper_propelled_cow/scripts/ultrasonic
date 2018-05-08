@@ -35,7 +35,7 @@ def ultrasonic_pub():
         rate.sleep()
 
 def shutdown_ultrasonic():
-	GPIO.cleanup()
+    GPIO.cleanup()
     time.sleep(1)
 
 if __name__ == '__main__':

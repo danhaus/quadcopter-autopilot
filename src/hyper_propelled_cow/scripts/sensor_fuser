@@ -21,6 +21,7 @@ class Fuser(object):
 		# sensors
 		self.ultrasonic_cur = 0
 		self.sonar_cur = 0
+		self.sonar_cur_raw = 0
 		self.ultrasonic_prev = 0
 		self.sonar_prev = 0
 		self.ultrasonic_last_update = time.time()
@@ -47,6 +48,7 @@ class Fuser(object):
 
 	def update_sonar(self, data):
 		self.sonar_prev = self.sonar_cur
+		self.sonar_cur_raw = data.data
 		self.sonar_cur = data.data - self.sonar_offset
 		self.sonar_last_update = time.time()
 
@@ -59,7 +61,7 @@ class Fuser(object):
 		# Sensor is assumed to be dead if its reading is zero or above 3000 mm or not responding for more than 0.5 sec.
 		if (time.time() - last_update) > 0.5:
 			return False
-		if current == 0:
+		if current < 1:
 			return False
 		if current > 3000:
 			return False
@@ -71,7 +73,7 @@ class Fuser(object):
 			# FUSING LOGIC BELOW #
 			######################
 			ultrasonic_alive = self.is_alive(self.ultrasonic_cur, self.ultrasonic_last_update)
-			sonar_alive = self.is_alive(self.sonar_cur, self.sonar_last_update)
+			sonar_alive = self.is_alive(self.sonar_cur_raw, self.sonar_last_update)
 			ultrasonic_incosistency = self.get_inconsistency(self.ultrasonic_cur, self.ultrasonic_prev, self.ultrasonic_rate)
 			sonar_incosistency = self.get_inconsistency(self.sonar_cur, self.sonar_prev, self.sonar_rate)
 
@@ -89,7 +91,7 @@ class Fuser(object):
 				self.to_filter = self.sonar_cur
 				rospy.loginfo("SONAR (ULTRASONIC IS DEAD)")
 			else:
-				self.to_filter = self.distance_demand + 5 # if both sensors are broken, force the drone to land
+				self.to_filter = self.distance_demand + 1 # if both sensors are broken, force the drone to land
 				rospy.logwarn("BOTH SENSORS FAILED: ACTIVATING FAIL-SAFE, trying to land...")
 			
 			#################################

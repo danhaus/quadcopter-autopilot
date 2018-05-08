@@ -9,13 +9,18 @@ class Fuser(object):
 	def __init__(self):
 		self.distance_pub = rospy.Publisher('distance_fused', Int16, queue_size=2)
 
+		self.sonar_offset = rospy.get_param('sonar/offset')
+
 		self.ultrasonic_cur = 0
 		self.sonar_cur = 0
 		self.ultrasonic_prev = 0
 		self.sonar_prev = 0
+		self.ultrasonic_last_update = time.time()
+		self.sonar_last_update = time.time()
 
 		self.ultrasonic_rate = rospy.get_param('ultrasonic/rate')
 		self.sonar_rate = 20 # Hz
+		self.distance_demand = rospy.get_param('distance_treshold')
 
 		rospy.init_node('distance_fused', anonymous=True)
 
@@ -26,31 +31,53 @@ class Fuser(object):
 		rospy.Subscriber('sonar_distance', Int16, self.update_sonar)
 		self.distance_fused_publisher()
 
-		
-
 
 	def update_ultrasonic(self, data):
 		self.ultrasonic_prev = self.ultrasonic_cur
 		self.ultrasonic_cur = data.data
+		self.ultrasonic_last_update = time.time()
 
 	def update_sonar(self, data):
-		self.sonar_prev = self.sonar_cur
+		self.sonar_prev = self.sonar_cur - self.sonar_offset
 		self.sonar_cur = data.data
+		self.sonar_last_update = time.time()
 
 	def get_inconsistency(self, current, previous, freq):
 		diff = abs(current - previous)
 		inconsistency = diff * freq # the lower inconsistency the better
 		return inconsistency
 
+	def is_alive(self, current, last_update):
+		# Sensor is assumed to be dead if its reading is zero or above 3000 mm or not responding for more than 0.5 sec.
+		if (time.time() - last_update) > 0.5: # is dead if is not responding for more than 0.5 sec
+			return False
+		if current == 0:
+			return False
+		if current > 3000:
+			return False
+		return True
 
 	def distance_fused_publisher(self):
 		while not rospy.is_shutdown():
 			###
-			# LOGIC COMES HERE
+			# FUSING LOGIC BELOW
 			###
+			ultrasonic_alive = is_alive(self.ultrasonic_cur, self.ultrasonic_last_update)
+			sonar_alive = is_alive(self.sonar_cur, self.sonar_last_update)
 			ultrasonic_incosistency = self.get_inconsistency(self.ultrasonic_cur, self.ultrasonic_prev, self.ultrasonic_rate)
+			sonar_incosistency = self.get_inconsistency(self.sonar_cur, self.sonar_prev, self.sonar_rate)
 
-			self.distance_pub.publish(ultrasonic_incosistency)
+			if (ultrasonic_alive and sonar_alive):
+				if ultrasonic_incosistency < sonar_incosistency:
+					self.distance_pub.publish(ultrasonic_cur)
+				else:
+					self.distance_pub.publish(sonar_cur)
+			elif (ultrasonic_alive):
+				self.distance_pub.publish(ultrasonic_cur)
+			elif:
+				self.distance_pub.publish(sonar_cur)
+			else:
+				self.distance_pub.publish(self.distance_demand + 10) # if both sensors are broken, force the drone to land
 			self.rate.sleep()
 
 if __name__ == '__main__':

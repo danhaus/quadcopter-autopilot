@@ -74,14 +74,19 @@ class Fuser(object):
 			if (ultrasonic_alive and sonar_alive):
 				if ultrasonic_incosistency < sonar_incosistency:
 					self.to_filter = self.ultrasonic_cur
+					rospy.loginfo("ULTRASONIC")
 				else:
 					self.to_filter = self.sonar_cur
+					rospy.loginfo("SONAR")
 			elif (ultrasonic_alive):
 				self.to_filter = self.ultrasonic_cur
+				rospy.loginfo("ULTRASONIC")
 			elif (sonar_alive):
 				self.to_filter = self.sonar_cur
+				rospy.loginfo("SONAR")
 			else:
 				self.to_filter = self.distance_demand + 10 # if both sensors are broken, force the drone to land
+				rospy.loginfo("FAIL-SAFE")
 			
 			###
 			# APPLY EXPONENTIAL SMOOTHENING

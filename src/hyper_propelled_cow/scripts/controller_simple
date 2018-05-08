@@ -31,7 +31,7 @@ class Controller(object):
 		self.start = time.time()
 
 
-		rospy.Subscriber('sonar_distance', Int16, self.main_control)
+		rospy.Subscriber('distance_fused', Int16, self.main_control)
 		rospy.spin() # IT MIGHT NOT NEED TO BE HERE
 
 	def main_control(self, data):

@@ -31,8 +31,8 @@ class Fuser(object):
 		self.freq = rospy.get_param("main/rate")
 		self.rate = rospy.Rate(self.freq)
 
-		rospy.Subscriber('ultrasonic_distance', Int16, self.update_ultrasonic)
-		rospy.Subscriber('sonar_distance', Int16, self.update_sonar)
+		rospy.Subscriber('ultrasonic_median', Int16, self.update_ultrasonic)
+		rospy.Subscriber('sonar_median', Int16, self.update_sonar)
 		self.distance_fused_publisher()
 
 

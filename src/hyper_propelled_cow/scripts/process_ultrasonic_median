@@ -9,7 +9,7 @@ last_published = 0
 offset = rospy.get_param('filter/offset')
 
 # RATE = rospy.get_param('ultrasonic/rate')
-pub = rospy.Publisher('ultrasonic_distance', Int16, queue_size=2)
+pub = rospy.Publisher('ultrasonic_median', Int16, queue_size=2)
 
 def start():
 	rospy.init_node('process_ultrasonic', anonymous=True)

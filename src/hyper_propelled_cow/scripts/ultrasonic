@@ -28,7 +28,8 @@ def ultrasonic_pub():
         # saturation
         if dist > 32000:
             dist = 32000
-
+        if dist < 0:
+            dist = 0
         pub.publish(dist)
         rate.sleep()
 

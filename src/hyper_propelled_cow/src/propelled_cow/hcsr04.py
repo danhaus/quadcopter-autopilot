@@ -35,14 +35,14 @@ class HCSR04 (object):
                 # print "reseting"
                 GPIO.cleanup()
                 # print "cleanup done, sleeping for 1 sec"
-                time.sleep(0.5)
+                time.sleep(1)
                 GPIO.setmode(GPIO.BCM)
                 # print "mode set"
                 GPIO.setup(self.GPIO_ECHO, GPIO.OUT)
                 GPIO.setup(self.GPIO_TRIGGER, GPIO.OUT)
                 GPIO.output(self.GPIO_ECHO, False)
                 # print "pins set, echo outputs false, waiting 0.5 s"
-                time.sleep(0.5)
+                time.sleep(1)
 
                 GPIO.cleanup()
                 # print "second cleanup done"

@@ -9,12 +9,16 @@ class Fuser(object):
 	def __init__(self):
 		self.distance_pub = rospy.Publisher('distance_fused', Int16, queue_size=2)
 
-		self.sonar_offset = rospy.get_param('sonar/offset')
+		self.sonar_offset = rospy.get_param('sonar/offset') # offset of sonar compared to ultrasonic (sonar_offset = sonar - ultrasonic)
+		self.ultrasonic_rate = rospy.get_param('ultrasonic/rate')
+		self.sonar_rate = 20 # Hz
+		self.distance_demand = rospy.get_param('distance_treshold')
 
 		self.last_published = 0
 		self.to_filter = 0
 		self.alpha = 0.3 # exponential filter constant (alpha*current + (1-alpha)*previous)
 
+		# sensors
 		self.ultrasonic_cur = 0
 		self.sonar_cur = 0
 		self.ultrasonic_prev = 0
@@ -22,17 +26,17 @@ class Fuser(object):
 		self.ultrasonic_last_update = time.time()
 		self.sonar_last_update = time.time()
 
-		self.ultrasonic_rate = rospy.get_param('ultrasonic/rate')
-		self.sonar_rate = 20 # Hz
-		self.distance_demand = rospy.get_param('distance_treshold')
-
+		
 		rospy.init_node('distance_fused', anonymous=True)
 
-		self.freq = rospy.get_param("main/rate")
+		self.freq = rospy.get_param("main/rate") # rate for updating PID
 		self.rate = rospy.Rate(self.freq)
 
+		# subscribed to sensor values that already have median filter
 		rospy.Subscriber('ultrasonic_median', Int16, self.update_ultrasonic)
 		rospy.Subscriber('sonar_median', Int16, self.update_sonar)
+
+		# Run the loop publishing fused a filtered reading.
 		self.distance_fused_publisher()
 
 
@@ -42,8 +46,8 @@ class Fuser(object):
 		self.ultrasonic_last_update = time.time()
 
 	def update_sonar(self, data):
-		self.sonar_prev = self.sonar_cur - self.sonar_offset
-		self.sonar_cur = data.data
+		self.sonar_prev = self.sonar_cur
+		self.sonar_cur = data.data - self.sonar_offset
 		self.sonar_last_update = time.time()
 
 	def get_inconsistency(self, current, previous, freq):
@@ -53,7 +57,7 @@ class Fuser(object):
 
 	def is_alive(self, current, last_update):
 		# Sensor is assumed to be dead if its reading is zero or above 3000 mm or not responding for more than 0.5 sec.
-		if (time.time() - last_update) > 0.5: # is dead if is not responding for more than 0.5 sec
+		if (time.time() - last_update) > 0.5:
 			return False
 		if current == 0:
 			return False
@@ -63,9 +67,9 @@ class Fuser(object):
 
 	def distance_fused_publisher(self):
 		while not rospy.is_shutdown():
-			###
-			# FUSING LOGIC BELOW
-			###
+			######################
+			# FUSING LOGIC BELOW #
+			######################
 			ultrasonic_alive = self.is_alive(self.ultrasonic_cur, self.ultrasonic_last_update)
 			sonar_alive = self.is_alive(self.sonar_cur, self.sonar_last_update)
 			ultrasonic_incosistency = self.get_inconsistency(self.ultrasonic_cur, self.ultrasonic_prev, self.ultrasonic_rate)
@@ -74,24 +78,28 @@ class Fuser(object):
 			if (ultrasonic_alive and sonar_alive):
 				if ultrasonic_incosistency < sonar_incosistency:
 					self.to_filter = self.ultrasonic_cur
-					rospy.loginfo("ULTRASONIC")
+					rospy.loginfo("ULTRASONIC (both sensors alive)")
 				else:
 					self.to_filter = self.sonar_cur
-					rospy.loginfo("SONAR")
+					rospy.loginfo("SONAR (both sensors alive)")
 			elif (ultrasonic_alive):
 				self.to_filter = self.ultrasonic_cur
-				rospy.loginfo("ULTRASONIC")
+				rospy.loginfo("ULTRASONIC (SONAR IS DEAD)")
 			elif (sonar_alive):
 				self.to_filter = self.sonar_cur
-				rospy.loginfo("SONAR")
+				rospy.loginfo("SONAR (ULTRASONIC IS DEAD)")
 			else:
-				self.to_filter = self.distance_demand + 10 # if both sensors are broken, force the drone to land
-				rospy.loginfo("FAIL-SAFE")
+				self.to_filter = self.distance_demand + 5 # if both sensors are broken, force the drone to land
+				rospy.logwarn("BOTH SENSORS FAILED: ACTIVATING FAIL-SAFE, trying to land...")
 			
-			###
-			# APPLY EXPONENTIAL SMOOTHENING
-			###
+			#################################
+			# APPLY EXPONENTIAL SMOOTHENING #
+			#################################
 			filtered = self.alpha*self.to_filter + (1-self.alpha)*self.last_published
+
+			###########
+			# PUBLISH #
+			###########
 			self.distance_pub.publish(filtered)
 			self.last_published = filtered
 			self.rate.sleep()

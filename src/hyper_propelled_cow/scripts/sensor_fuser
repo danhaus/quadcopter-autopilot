@@ -86,7 +86,7 @@ class Fuser(object):
 			###
 			# APPLY EXPONENTIAL SMOOTHENING
 			###
-			filtered = self.alpha*to_filter + (1-self.alpha)*self.last_published
+			filtered = self.alpha*self.to_filter + (1-self.alpha)*self.last_published
 			self.distance_pub.publish(filtered)
 			self.last_published = filtered
 			self.rate.sleep()

@@ -74,7 +74,7 @@ class PID(object):
     $ p_{error} = p_{state} - p_{target} $.
     """
 
-    def __init__(self, p_gain, i_gain, d_gain, i_max, i_min):
+    def __init__(self, p_gain, i_gain, d_gain, i_max, i_min, d_max, d_min):
         """Constructor, zeros out Pid values when created and
         initialize Pid-gains and integral term limits.
 
@@ -85,7 +85,7 @@ class PID(object):
           i_max      The integral upper limit.
           i_min      The integral lower limit.
         """
-        self.set_gains(p_gain, i_gain, d_gain, i_max, i_min)
+        self.set_gains(p_gain, i_gain, d_gain, i_max, i_min, d_max, d_min)
         self.reset()
 
     def reset(self):
@@ -98,7 +98,7 @@ class PID(object):
         self._cmd = 0.0 # Command to send.
         self._last_time = None # Used for automatic calculation of dt.
 
-    def set_gains(self, p_gain, i_gain, d_gain, i_max, i_min):
+    def set_gains(self, p_gain, i_gain, d_gain, i_max, i_min, d_max, d_min):
         """ Set PID gains for the controller.
 
          Parameters:
@@ -113,6 +113,8 @@ class PID(object):
         self._d_gain = d_gain
         self._i_max = i_max
         self._i_min = i_min
+        self._d_max = d_max
+        self._d_min = d_min
 
     @property
     def p_gain(self):
@@ -138,6 +140,16 @@ class PID(object):
     def i_min(self):
         """ Read-only access to i_min. """
         return self._i_min
+
+    @property
+    def d_max(self):
+        """ Read-only access to i_max. """
+        return self._d_max
+
+    @property
+    def d_min(self):
+        """ Read-only access to i_min. """
+        return self._d_min
 
     @property
     def p_error(self):
@@ -215,8 +227,15 @@ class PID(object):
         self._d_error = (self._p_error - self._p_error_last) / dt
         self._p_error_last = self._p_error
 
+
         # Calculate derivative contribution to command
         d_term = self._d_gain * self._d_error
+
+        # Limit d_term
+        if self.d_term > self._d_max:
+            self.d_term = self._d_max
+        if self._d_error < self._d_min:
+            self.d_term = self._d_min
 
         self._cmd = -p_term - i_term - d_term
 

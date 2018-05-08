@@ -20,7 +20,7 @@ class Controller(object):
 		self.PWM_current = self.PWM_limits['min']
 
 		# Start countdown.
-		i = 20
+		i = 10
 		rospy.logwarn("Take off counter started.")
 		while (i > 0):
 			rospy.logwarn("Countdown: " + str(i))
@@ -31,10 +31,10 @@ class Controller(object):
 		self.start = time.time()
 
 
-		rospy.Subscriber('sonar_distance', Int16, self.process_ultrasonic_distance)
+		rospy.Subscriber('sonar_distance', Int16, self.main_control)
 		rospy.spin() # IT MIGHT NOT NEED TO BE HERE
 
-	def process_ultrasonic_distance(self, data):
+	def main_control(self, data):
 		self.distance = data.data
 		err = self.distance_demand - self.distance
 		PWM_correction = -self.controller.update_PID(err)

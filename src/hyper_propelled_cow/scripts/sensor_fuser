@@ -11,6 +11,10 @@ class Fuser(object):
 
 		self.sonar_offset = rospy.get_param('sonar/offset')
 
+		self.last_published = 0
+		self.to_filter = 0
+		self.alpha = 0.3 # exponential filter constant (alpha*current + (1-alpha)*previous)
+
 		self.ultrasonic_cur = 0
 		self.sonar_cur = 0
 		self.ultrasonic_prev = 0
@@ -69,15 +73,22 @@ class Fuser(object):
 
 			if (ultrasonic_alive and sonar_alive):
 				if ultrasonic_incosistency < sonar_incosistency:
-					self.distance_pub.publish(self.ultrasonic_cur)
+					self.to_filter = self.ultrasonic_cur
 				else:
-					self.distance_pub.publish(self.sonar_cur)
+					self.to_filter = self.sonar_cur
 			elif (ultrasonic_alive):
-				self.distance_pub.publish(self.ultrasonic_cur)
+				self.to_filter = self.ultrasonic_cur
 			elif (sonar_alive):
-				self.distance_pub.publish(self.sonar_cur)
+				self.to_filter = self.sonar_cur
 			else:
-				self.distance_pub.publish(self.distance_demand + 10) # if both sensors are broken, force the drone to land
+				self.to_filter = self.distance_demand + 10 # if both sensors are broken, force the drone to land
+			
+			###
+			# APPLY EXPONENTIAL SMOOTHENING
+			###
+			filtered = self.alpha*to_filter + (1-self.alpha)*self.last_published
+			self.distance_pub.publish(filtered)
+			self.last_published = filtered
 			self.rate.sleep()
 
 if __name__ == '__main__':

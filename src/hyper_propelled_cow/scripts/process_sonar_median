@@ -4,7 +4,6 @@ import rospy
 from std_msgs.msg import Int16, Int32
 from statistics import median
 
-alpha = 0.3 # constant for exponential filter
 
 readings_cut = [0, 0, 0]
 last_published = 0
@@ -33,14 +32,11 @@ def process_ultrasonic(data):
 	# apply median filter to cut off extreme values
 	median_value = median(readings_cut)
 
-	# apply exponential filter to smooth the reading
-	filtered_value = alpha*median_value + (1-alpha)*last_published
-
 	# publish
-	pub.publish(filtered_value)
+	pub.publish(median_value)
 
 	# save published value for the exponential filter
-	last_published = filtered_value
+	last_published = median_value
 
 
 def cut_crazy_values(data, new_reading):

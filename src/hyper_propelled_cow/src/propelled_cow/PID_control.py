@@ -74,7 +74,7 @@ class PID(object):
     $ p_{error} = p_{state} - p_{target} $.
     """
 
-    def __init__(self, p_gain, i_gain, d_gain, i_max, i_min, d_max, d_min):
+    def __init__(self, p_gain, i_gain, d_gain, i_max, i_min, d_max=100000000, d_min=0):
         """Constructor, zeros out Pid values when created and
         initialize Pid-gains and integral term limits.
 

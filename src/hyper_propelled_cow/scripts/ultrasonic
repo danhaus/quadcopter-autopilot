@@ -3,6 +3,7 @@
 import rospy
 import os
 import sys
+import time
 
 from propelled_cow.hcsr04 import HCSR04
 
@@ -35,6 +36,7 @@ def ultrasonic_pub():
 
 def shutdown_ultrasonic():
 	GPIO.cleanup()
+    time.sleep(1)
 
 if __name__ == '__main__':
     try:

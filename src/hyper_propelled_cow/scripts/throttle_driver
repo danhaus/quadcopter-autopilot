@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import rospy
+import time
 from std_msgs.msg import Int16, Int32
 
 from propelled_cow.pwm_pigpio import PWM
@@ -24,6 +25,7 @@ def listener():
 
 def shutdown_throttle():
 	pwm.set_duty_cycle(1000)
+	time.sleep(1)
 
 if __name__ == '__main__':
 	listener()

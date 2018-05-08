@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import rospy
+import time
 from std_msgs.msg import Int16, Int32
 
 from propelled_cow.pwm_pigpio import PWM
@@ -15,6 +16,7 @@ def callback(data):
 
 def shutdown_servo():
 	pwm.stop()
+	time.sleep(1)
 
 def listener():
 	rospy.init_node('servo_driver', anonymous=True)

@@ -1,4 +1,4 @@
-# PINS - GPIO.BOARD setting
+# PINS - GPIO.BCM setting
 # https://pinout.xyz/
 # PWM - 4 pins, but only 2 identical outputs: GPIO 33 & 35 the same, GPIO 12 & 32 the same
 #################################################

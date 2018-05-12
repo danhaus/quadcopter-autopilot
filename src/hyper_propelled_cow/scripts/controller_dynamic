@@ -77,7 +77,7 @@ class Controller(object):
 	def take_off(self):
 		sleep_time = 0.2
 		PWM_delta = 5
-		while(not self.is_in_the_air()): # while it is on the ground
+		while(not self.is_in_the_air(self.altitude)): # while it is on the ground
 			self.PWM_current += PWM_delta
 			self.throttle_pub.publish(self.PWM_current)
 			time.sleep(sleep_time)

@@ -32,7 +32,8 @@ class Controller(object):
 		self.altitude = 0
 
 		# is_in_the_air() vars
-		self.votes_count = 0
+		self.votes_count_air = 0
+		self.votes_count_drop = 0
 
 		# Start countdown.
 		i = 10
@@ -54,25 +55,43 @@ class Controller(object):
 
 	def throttle_publisher(self):
 		# Take off and set PID saturation limits.
+		bag_is_dropped = False
 		self.take_off()
 		while not rospy.is_shutdown():
 			err = self.distance_demand - self.altitude
 			PWM_correction = -self.controller.update_PID(err)
 			PWM_raw = self.PWM_current + PWM_correction
 			self.PWM_current = _PID.saturation(PWM_raw, self.PWM_min, self.PWM_max)
+
+			if (not bag_is_dropped):
+				if(self.drop_bag()):
+					self.servo_pub.publish(170)
+					rospy.loginfo("Bean bag dropped.")
+					bag_is_dropped = True
+
 			self.throttle_pub.publish(self.PWM_current)
 			self.rate.sleep()
 
 	def is_in_the_air(self, altitude):
 		if altitude > 100:
-			self.votes_count += 1
-			rospy.loginfo("votes_count: " + str(self.votes_count))
-			if self.votes_count >= 5:
+			self.votes_count_air += 1
+			rospy.loginfo("votes_count_air: " + str(self.votes_count_air))
+			if self.votes_count_air >= 5:
 				rospy.loginfo("Quadcopter is in the air.")
 				return True
 		else:
-			self.votes_count = 0
+			self.votes_count_air = 0
 		return False
+
+	def drop_bag(self):
+		if (self.altitude > self.distance_demand - 100):
+			self.votes_count_drop += 1
+			rospy.loginfo("votes_count_drop: " + str(self.votes_count_drop))
+			if (self.votes_count_drop >= 50) or (time.time() - self.start() > 25):
+				return True
+		else:
+			self.votes_count_drop = 0
+			return False
 
 	def take_off(self):
 		sleep_time = 0.4

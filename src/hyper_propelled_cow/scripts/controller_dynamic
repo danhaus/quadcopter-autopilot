@@ -87,7 +87,10 @@ class Controller(object):
 		if (self.altitude > self.distance_demand - 100):
 			self.votes_count_drop += 1
 			rospy.loginfo("votes_count_drop: " + str(self.votes_count_drop))
-			if (self.votes_count_drop >= 50) or (time.time() - self.start > 25):
+			if (time.time() - self.start > 30):
+				rospy.loginfo("Drop bean bag timed out. Opening servo.")
+				return True
+			if (self.votes_count_drop >= 50):
 				return True
 		else:
 			self.votes_count_drop = 0

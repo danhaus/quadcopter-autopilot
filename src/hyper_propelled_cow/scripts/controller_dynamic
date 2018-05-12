@@ -60,7 +60,7 @@ class Controller(object):
 			PWM_correction = -self.controller.update_PID(err)
 			PWM_raw = self.PWM_current + PWM_correction
 			self.PWM_current = _PID.saturation(PWM_raw, self.PWM_min, self.PWM_max)
-			self.throttle_pub.publish(PWM_current)
+			self.throttle_pub.publish(self.PWM_current)
 			self.rate.sleep()
 
 	def is_in_the_air(self, altitude):

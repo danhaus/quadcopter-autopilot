@@ -68,14 +68,14 @@ class Controller(object):
 			self.votes_count += 1
 			rospy.loginfo("votes_count: " + str(self.votes_count))
 			if self.votes_count >= 5:
-				rospy.loginfo("votes_count: " + str(self.votes_count))
+				rospy.loginfo("Quadcopter is in the air.")
 				return True
 		else:
 			self.votes_count = 0
 		return False
 
 	def take_off(self):
-		sleep_time = 0.2
+		sleep_time = 0.4
 		PWM_delta = 5
 		while(not self.is_in_the_air(self.altitude)): # while it is on the ground
 			self.PWM_current += PWM_delta
@@ -87,6 +87,8 @@ class Controller(object):
 		min_offset = self.PWM_limits['dynamic_min_offset']
 		self.PWM_max = self.PWM_current + max_offset
 		self.PWM_min = self.PWM_current - min_offset
+		rospy.loginfo("PWM_min set to: " + str(self.PWM_min))
+		rospy.loginfo("PWM_max set to: " + str(self.PWM_max))
 
 	# def main_control(self, data):
 	# 	distance = data.data

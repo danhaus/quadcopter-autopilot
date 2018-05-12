@@ -73,7 +73,7 @@ class Controller(object):
 			self.rate.sleep()
 
 	def is_in_the_air(self, altitude):
-		if altitude > 100:
+		if altitude > 60:
 			self.votes_count_air += 1
 			rospy.loginfo("votes_count_air: " + str(self.votes_count_air))
 			if self.votes_count_air >= 5:
@@ -87,17 +87,18 @@ class Controller(object):
 		if (self.altitude > self.distance_demand - 100):
 			self.votes_count_drop += 1
 			rospy.loginfo("votes_count_drop: " + str(self.votes_count_drop))
-			if (self.votes_count_drop >= 50) or (time.time() - self.start() > 25):
+			if (self.votes_count_drop >= 50) or (time.time() - self.start > 25):
 				return True
 		else:
 			self.votes_count_drop = 0
 			return False
 
 	def take_off(self):
-		sleep_time = 0.4
+		sleep_time = 0.2
 		PWM_delta = 5
 		while(not self.is_in_the_air(self.altitude)): # while it is on the ground
-			self.PWM_current += PWM_delta
+			if (self.votes_count_air == 0): # increase throttle only if the counter is zero
+				self.PWM_current += PWM_delta
 			self.throttle_pub.publish(self.PWM_current)
 			time.sleep(sleep_time)
 

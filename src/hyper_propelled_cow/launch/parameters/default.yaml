@@ -29,5 +29,9 @@ filter/offset: 200 # mm
 # min & max length of duty cycle for throttle, used in PID saturation
 PWM/min: 1450 # us
 PWM/max: 1650 # us
+
+PWM/dynamic_start: 1200 # us
+PWM/dynamic_range: 20 # us
+
 servo/min: 750 # us
 servo/max: 2300 # us

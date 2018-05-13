@@ -100,7 +100,7 @@ class Controller(object):
 			return False
 
 	def take_off(self):
-		sleep_time = 0.2
+		sleep_time = 1.0
 		PWM_delta = 5
 		# Start spinning motors with dynamic_start PWM.
 		self.throttle_pub.publish(self.PWM_current)

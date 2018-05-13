@@ -48,7 +48,10 @@ class Fuser(object):
 
 	def update_sonar(self, data):
 		self.sonar_prev = self.sonar_cur
-		self.sonar_cur_raw = data.data
+		if ((self.ultrasonic_cur < 300) and (self.ultrasonic_cur != 0)): # Improve noise when taking off.
+			self.sonar_cur = 0
+		else:
+			self.sonar_cur_raw = data.data
 		self.sonar_cur = data.data - self.sonar_offset
 		self.sonar_last_update = time.time()
 

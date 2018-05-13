@@ -65,7 +65,7 @@ class Controller(object):
 
 			if (not bag_is_dropped):
 				if(self.drop_bag()):
-					self.servo_pub.publish(170)
+					self.servo_pub.publish(0)
 					rospy.loginfo("Bean bag dropped.")
 					bag_is_dropped = True
 
@@ -93,15 +93,15 @@ class Controller(object):
 			# if (time.time() - self.start > 30):
 			# 	rospy.loginfo("Drop bean bag timed out. Opening servo.")
 			# 	return True
-			if (self.votes_count_drop >= 20):
+			if (self.votes_count_drop >= 60):
 				return True
 		else:
 			self.votes_count_drop = 0
 			return False
 
 	def take_off(self):
-		sleep_time = 1.0
-		PWM_delta = 5
+		sleep_time = 0.2
+		PWM_delta = 1
 		# Start spinning motors with dynamic_start PWM.
 		self.throttle_pub.publish(self.PWM_current)
 		time.sleep(1)

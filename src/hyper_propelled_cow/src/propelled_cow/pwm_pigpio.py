@@ -46,6 +46,10 @@ if __name__ == '__main__':
 	# servo.example_throttle()
 	# servo.example_servo()
 
-	servo.set_angle(180)
+	servo.set_angle(0)
+	print "0"
 	time.sleep(2)
+	servo.set_angle(180)
+	print "180"
+	time.sleep(1)
 	servo.stop()

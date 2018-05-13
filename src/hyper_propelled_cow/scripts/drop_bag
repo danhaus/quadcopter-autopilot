@@ -25,7 +25,7 @@ class Controller(object):
 
 	def drop_bag(self):
 	# Returns True when it is within 100 mm error from the required altitude for 50 subsequent iterations.
-		if (abs(self.altitude - self.distance_demand) < 100):
+		if (abs(self.altitude - self.distance_demand) < 10):
 			self.votes_count_drop += 1
 			rospy.loginfo("votes_count_drop: " + str(self.votes_count_drop))
 			# if (time.time() - self.start > 30):
@@ -41,7 +41,7 @@ class Controller(object):
 		self.altitude = data.data
 		if (not self.bag_is_dropped):
 			if(self.drop_bag()):
-				self.servo_pub.publish(170)
+				self.servo_pub.publish(0)
 				rospy.loginfo("Bean bag dropped.")
 				self.bag_is_dropped = True
 

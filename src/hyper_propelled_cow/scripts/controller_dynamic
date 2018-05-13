@@ -93,7 +93,7 @@ class Controller(object):
 			# if (time.time() - self.start > 30):
 			# 	rospy.loginfo("Drop bean bag timed out. Opening servo.")
 			# 	return True
-			if (self.votes_count_drop >= 50):
+			if (self.votes_count_drop >= 20):
 				return True
 		else:
 			self.votes_count_drop = 0

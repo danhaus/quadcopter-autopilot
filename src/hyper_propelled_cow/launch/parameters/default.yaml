@@ -23,7 +23,7 @@ distance/Kd: 0.001
 # LIMITS / CONSTANTS
 #################################################
 sonar/offset: -25 # offset in reading for sonar compared to ultrasonic(offset = sonar_reading - ultrasonic_reading)
-distance_treshold: 1100 # mm
+distance_treshold: 830 # mm
 filter/offset: 200 # mm
 
 # min & max length of duty cycle for throttle, used in PID saturation

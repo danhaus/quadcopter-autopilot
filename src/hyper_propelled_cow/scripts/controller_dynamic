@@ -84,12 +84,15 @@ class Controller(object):
 		return False
 
 	def drop_bag(self):
-		if (self.altitude > self.distance_demand - 100):
+		'''
+		Returns True when it is within 100 mm error from the required altitude for 50 subsequent iterations.
+		'''
+		if abs(self.altitude > self.distance_demand - 100):
 			self.votes_count_drop += 1
 			rospy.loginfo("votes_count_drop: " + str(self.votes_count_drop))
-			if (time.time() - self.start > 30):
-				rospy.loginfo("Drop bean bag timed out. Opening servo.")
-				return True
+			# if (time.time() - self.start > 30):
+			# 	rospy.loginfo("Drop bean bag timed out. Opening servo.")
+			# 	return True
 			if (self.votes_count_drop >= 50):
 				return True
 		else:
@@ -99,6 +102,10 @@ class Controller(object):
 	def take_off(self):
 		sleep_time = 0.2
 		PWM_delta = 5
+		# Start spinning motors with dynamic_start PWM.
+		self.throttle_pub.publish(self.PWM_current)
+		time.sleep(1)
+		# After 1 sec start increasing the throttle until took off detected.
 		while(not self.is_in_the_air(self.altitude)): # while it is on the ground
 			if (self.votes_count_air == 0): # increase throttle only if the counter is zero
 				self.PWM_current += PWM_delta

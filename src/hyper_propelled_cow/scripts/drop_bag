@@ -20,6 +20,7 @@ class Controller(object):
 
 		rospy.init_node('controller', anonymous=True)
 		rospy.Subscriber('distance_fused', Int16, self.main_control)
+		rospy.loginfo("Initialized. Ready to drop.")
 		rospy.spin()
 
 	def drop_bag(self):

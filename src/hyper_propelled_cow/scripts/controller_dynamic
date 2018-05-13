@@ -1,0 +1,138 @@
+#!/usr/bin/env python
+
+import rospy
+import time
+from std_msgs.msg import Int16, Int32
+
+import propelled_cow.PID_control as _PID
+
+
+class Controller(object):
+	"""docstring for Controller"""
+	def __init__(self):
+		self.distance_demand = rospy.get_param('distance_treshold')
+		self.PID_vals = rospy.get_param('distance')
+		self.controller = _PID.PID(self.PID_vals['Kp'], self.PID_vals['Ki'], self.PID_vals['Kd'], 2, 0) # THE LAST TWO VALUES NEEDS TO BE ADJUSTED
+		self.throttle_pub = rospy.Publisher('PWM_throttle', Int16, queue_size=2)
+		self.servo_pub = rospy.Publisher('servo_angle', Int16, queue_size=10)
+		rospy.init_node('controller', anonymous=True)
+
+		# Throttle PWM vals.
+		self.PWM_limits = rospy.get_param('PWM')
+		self.PWM_current = self.PWM_limits['dynamic_start']
+		self.PWM_min = 1000 # To be set when takes off.
+		self.PWM_max = 1000 # To be set when takes off.
+
+		self.freq = rospy.get_param("main/rate") # rate for updating PID
+		self.rate = rospy.Rate(self.freq)
+
+		rospy.Subscriber('distance_fused', Int16, self.update_altitude)
+
+		# class vars
+		self.altitude = 0
+
+		# is_in_the_air() vars
+		self.votes_count_air = 0
+		self.votes_count_drop = 0
+
+		# Start countdown.
+		i = 10
+		rospy.logwarn("Take off counter started.")
+		while (i > 0):
+			rospy.logwarn("Countdown: " + str(i))
+			time.sleep(1)
+			i = i - 1
+		rospy.logwarn("Launched.")
+
+		self.start = time.time()
+
+		# Start main flight logic.
+		self.throttle_publisher()
+
+
+	def update_altitude(self, data):
+		self.altitude = data.data
+
+	def throttle_publisher(self):
+		# Take off and set PID saturation limits.
+		bag_is_dropped = False
+		self.take_off()
+		while not rospy.is_shutdown():
+			err = self.distance_demand - self.altitude
+			PWM_correction = -self.controller.update_PID(err)
+			PWM_raw = self.PWM_current + PWM_correction
+			self.PWM_current = _PID.saturation(PWM_raw, self.PWM_min, self.PWM_max)
+
+			if (not bag_is_dropped):
+				if(self.drop_bag()):
+					self.servo_pub.publish(170)
+					rospy.loginfo("Bean bag dropped.")
+					bag_is_dropped = True
+
+			self.throttle_pub.publish(self.PWM_current)
+			self.rate.sleep()
+
+	def is_in_the_air(self, altitude):
+		if altitude > 60:
+			self.votes_count_air += 1
+			rospy.loginfo("votes_count_air: " + str(self.votes_count_air))
+			if self.votes_count_air >= 5:
+				rospy.loginfo("Quadcopter is in the air.")
+				return True
+		else:
+			self.votes_count_air = 0
+		return False
+
+	def drop_bag(self):
+		'''
+		Returns True when it is within 100 mm error from the required altitude for 50 subsequent iterations.
+		'''
+		if (abs(self.altitude - self.distance_demand) < 100):
+			self.votes_count_drop += 1
+			rospy.loginfo("votes_count_drop: " + str(self.votes_count_drop))
+			# if (time.time() - self.start > 30):
+			# 	rospy.loginfo("Drop bean bag timed out. Opening servo.")
+			# 	return True
+			if (self.votes_count_drop >= 20):
+				return True
+		else:
+			self.votes_count_drop = 0
+			return False
+
+	def take_off(self):
+		sleep_time = 1.0
+		PWM_delta = 5
+		# Start spinning motors with dynamic_start PWM.
+		self.throttle_pub.publish(self.PWM_current)
+		time.sleep(1)
+		# After 1 sec start increasing the throttle until took off detected.
+		while(not self.is_in_the_air(self.altitude)): # while it is on the ground
+			if (self.votes_count_air == 0): # increase throttle only if the counter is zero
+				self.PWM_current += PWM_delta
+			self.throttle_pub.publish(self.PWM_current)
+			time.sleep(sleep_time)
+
+		# Now set PWM limits to the class vars.
+		max_offset = self.PWM_limits['dynamic_max_offset']
+		min_offset = self.PWM_limits['dynamic_min_offset']
+		self.PWM_max = self.PWM_current + max_offset
+		self.PWM_min = self.PWM_current - min_offset
+		rospy.loginfo("PWM_min set to: " + str(self.PWM_min))
+		rospy.loginfo("PWM_max set to: " + str(self.PWM_max))
+
+	# def main_control(self, data):
+	# 	distance = data.data
+	# 	err = self.distance_demand - distance
+	# 	PWM_correction = -self.controller.update_PID(err)
+	# 	PWM_raw = self.PWM_current + PWM_correction
+	# 	self.PWM_current = _PID.saturation(PWM_raw, self.PWM_limits['min'], self.PWM_limits['max'])
+	# 	self.throttle_pub.publish(self.PWM_current)
+
+	# 	# drop the bean bag if the drone is higher than 700 mm and the autopilot runs for at lest 10 secs
+	# 	if (distance >= (self.distance_demand - 100 )): # if the drone is higher than 800 - 100 mm
+	# 		now = time.time()
+	# 		if (now - self.start > 10): # if the drone is in the air for more than 10 secs
+	# 			self.servo_pub.publish(170)
+
+if __name__ == '__main__':
+	controller = Controller()

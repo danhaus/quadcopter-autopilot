@@ -15,9 +15,9 @@ accelerometer_compass/rate: 200
 
 # PID
 #################################################
-distance/Kp: 0.2
+distance/Kp: 0.1
 distance/Ki: 0
-distance/Kd: 0.05
+distance/Kd: 0.4
 
 
 # LIMITS / CONSTANTS
@@ -30,9 +30,9 @@ filter/offset: 200 # mm
 PWM/min: 1350 # us
 PWM/max: 1650 # us
 
-PWM/dynamic_start: 1300 # us
-PWM/dynamic_max_offset: 20 # us
-PWM/dynamic_min_offset: 60 # us
+PWM/dynamic_start: 1500 # us
+PWM/dynamic_max_offset: 35 # us
+PWM/dynamic_min_offset: 0 # us
 
 servo/min: 750 # us
 servo/max: 2300 # us

@@ -73,7 +73,7 @@ class Controller(object):
 			self.rate.sleep()
 
 	def is_in_the_air(self, altitude):
-		if altitude > 60:
+		if altitude > 100:
 			self.votes_count_air += 1
 			rospy.loginfo("votes_count_air: " + str(self.votes_count_air))
 			if self.votes_count_air >= 5:

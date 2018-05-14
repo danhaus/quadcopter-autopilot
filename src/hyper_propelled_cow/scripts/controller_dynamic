@@ -67,6 +67,10 @@ class Controller(object):
 				if(self.drop_bag()):
 					self.servo_pub.publish(50)
 					rospy.loginfo("Bean bag dropped.")
+					self.PWM_min = 1548
+					self.PWM_max = 1583
+					rospy.loginfo("PWM_min set to: " + str(self.PWM_min))
+					rospy.loginfo("PWM_max set to: " + str(self.PWM_max))
 					bag_is_dropped = True
 
 			self.throttle_pub.publish(self.PWM_current)
@@ -90,9 +94,9 @@ class Controller(object):
 		if (abs(self.altitude - self.distance_demand) < 150):
 			self.votes_count_drop += 1
 			rospy.loginfo("votes_count_drop: " + str(self.votes_count_drop))
-			# if (time.time() - self.start > 30):
-			# 	rospy.loginfo("Drop bean bag timed out. Opening servo.")
-			# 	return True
+			if (time.time() - self.start > 25):
+				rospy.loginfo("Drop bean bag timed out. Opening servo.")
+				return True
 			if (self.votes_count_drop >= 60):
 				return True
 		else:

@@ -17,7 +17,7 @@ accelerometer_compass/rate: 200
 #################################################
 distance/Kp: 0.1
 distance/Ki: 0
-distance/Kd: 0.4
+distance/Kd: 0.3
 
 
 # LIMITS / CONSTANTS

@@ -6,7 +6,7 @@ unsigned int mm, inches;
 
 #define RXIN 3
 #define PWM_SWITCH 5
-#define receiverThrottle 1400 // us
+#define receiverThrottle 1300 // us 1400 before
 
 
 /*

@@ -41,7 +41,7 @@ class Controller(object):
 		self.altitude = data.data
 		if (not self.bag_is_dropped):
 			if(self.drop_bag()):
-				self.servo_pub.publish(0)
+				self.servo_pub.publish(50)
 				rospy.loginfo("Bean bag dropped.")
 				self.bag_is_dropped = True
 

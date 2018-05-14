@@ -30,7 +30,7 @@ filter/offset: 200 # mm
 PWM/min: 1350 # us
 PWM/max: 1650 # us
 
-PWM/dynamic_start: 1500 # us
+PWM/dynamic_start: 1540 # us
 PWM/dynamic_max_offset: 35 # us
 PWM/dynamic_min_offset: 0 # us
 

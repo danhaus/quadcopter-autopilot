@@ -91,12 +91,12 @@ class Controller(object):
 		'''
 		Returns True when it is within 100 mm error from the required altitude for 50 subsequent iterations.
 		'''
+		if (time.time() - self.start > 25):
+			rospy.loginfo("Drop bean bag timed out. Opening servo.")
+			return True
 		if (abs(self.altitude - self.distance_demand) < 150):
 			self.votes_count_drop += 1
 			rospy.loginfo("votes_count_drop: " + str(self.votes_count_drop))
-			if (time.time() - self.start > 25):
-				rospy.loginfo("Drop bean bag timed out. Opening servo.")
-				return True
 			if (self.votes_count_drop >= 60):
 				return True
 		else:

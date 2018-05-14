@@ -22,7 +22,7 @@ distance/Kd: 0.4
 
 # LIMITS / CONSTANTS
 #################################################
-sonar/offset: -25 # offset in reading for sonar compared to ultrasonic(offset = sonar_reading - ultrasonic_reading)
+sonar/offset: -32 # offset in reading for sonar compared to ultrasonic(offset = sonar_reading - ultrasonic_reading)
 distance_treshold: 836 # mm
 filter/offset: 200 # mm
 

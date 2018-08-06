@@ -6,3 +6,5 @@
  - Flight controller Naze32
  - ultrasonic sensor HC-SR04 connected to the RPi through a potential divider
  - sonar MB1040 LV-MaxSonar-EZ4 connected to the Arduino
+
+![wiring diagram](img/wiring_diagram.png?raw=true "wiring diagram")

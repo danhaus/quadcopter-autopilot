@@ -2,9 +2,9 @@
 
 Quadcopter contains a grabber capable of lifting a payload from the ground. Autonomous mode grabs a payload, then takes off and hovers at 80 cm above the ground. When the quadcopter is in stable flight, it drops its load and continues hovering. Autopilot is written in Python 2.7 with ROS framework.
 
-![overview](img/overview.png?raw=true "wiring diagram")
-![bottom](img/bottom.jpeg?raw=true "wiring diagram")
-![grabber](img/grabber.jpeg?raw=true "wiring diagram")
+![overview](img/overview.jpg?raw=true "wiring diagram")
+![bottom](img/bottom.jpg?raw=true "wiring diagram")
+![grabber](img/grabber.jpg?raw=true "wiring diagram")
 
 ## Autopilot description
  - Parameters for flight are set in src/hyper_propelled_cow/launch/parameters/default.yaml

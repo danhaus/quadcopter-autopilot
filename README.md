@@ -29,7 +29,7 @@ sudo apt-get install pigpio python-pigpio
 cd ~/quadcopter-autopilot
 catkin_make
 ```
-to install pigpio library for PWM interface and build the code in catkin workspace.
+to install pigpio library for PWM interface and build the code in catkin workspace. <br />
 Upload src/Arduino code/main/main.ino to your Arduino and connect it with a USB cable to the RPi
 
 ## Usage

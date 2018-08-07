@@ -15,8 +15,9 @@ Quadcopter contains a grabber capable of lifting a payload from the ground. Auto
  - Raw reading is saturated between 1 and 3000 mm to eliminate anomalous data.
  - A median filter is applied to further reduce the noise.
  - Both readings are fed to sensor fusion algorithm (src/hyper_propelled_cow/scripts/sensor_fuser)
- - This algorithm determines consistency of both readings and publishes the more consistent one.
- - It is also capable of determining a failure of a sensor. If both sensors stop responding, it switches into fail-safe mode and lands the quadcopter.
+ - This algorithm determines consistency of both readings chooses the smoother one.
+ - Exponential smoothening is applied and then the distance is published to the PID controller.
+ - The sensor fusion is also capable of determining a failure of a sensor. If both sensors stop responding, it switches into fail-safe mode and lands the quadcopter.
 
 ## Electronics:
  - Raspberry Pi 3B (RPi)
@@ -28,3 +29,7 @@ Quadcopter contains a grabber capable of lifting a payload from the ground. Auto
  - relay switching between remote control and autopilot (toggled from a remote controller)
 
 ![wiring diagram](img/wiring_diagram.png?raw=true "wiring diagram")
+
+TODO:
+  - running the Autopilot
+  - ROS and its live messaging to a laptop (explain that the autopilot is started remotely from a laptop)

@@ -7,18 +7,6 @@ http://wiki.ros.org/kinetic/Installation/Ubuntu
 Setting up rsub (using Sublime Text over ssh)
 http://www.knight-of-pi.org/even-better-sublime-text-3-over-ssh-on-a-raspberry-pi-with-rsub/
 
-ROS packages
-currently used: rosflight, multiwii, mavros
-not used: -
-
-Other libraries:
-pigpio - C library for hardware-generated PWM
-python statistic
-
 Getting the additional libraries:
-sudo apt-get install ros-kinetic-multiwii
-sudo apt-get install ros-kinetic-rosflight
-sudo apt-get install ros-kinetic-mavros
 sudo apt-get install pigpio python-pigpio python3-pigpio
-sudo pip install statistics
 

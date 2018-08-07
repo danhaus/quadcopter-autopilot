@@ -7,7 +7,6 @@ Autopilot is written in Python 2.7 with ROS framework. Quadcopter contains a gra
 ![grabber](img/grabber.jpg?raw=true "wiring diagram")
 
 ## Autopilot description
- - Parameters for flight are set in src/hyper_propelled_cow/launch/parameters/default.yaml
  - After starting the autopilot (described below), motors start spinning with given power and their speed is continuously increasing until the quadcopter takes off.
  - PWM limits for controlling the motors are set based on the current PWM value.
  - PID controller is enabled: it inputs distance from the ground and outputs PWM value for the motors.
@@ -15,7 +14,7 @@ Autopilot is written in Python 2.7 with ROS framework. Quadcopter contains a gra
  - Raw reading is saturated between 1 and 3000 mm.
  - A median filter is applied to further reduce the noise.
  - Both readings are fed to sensor fusion algorithm (src/hyper_propelled_cow/scripts/sensor_fuser)
- - This algorithm determines consistency of both readings chooses the smoother one.
+ - This algorithm determines consistency of both readings and chooses the smoother one.
  - Exponential smoothening is applied and then the distance is published to the PID controller.
  - The sensor fusion is also capable of determining a failure of a sensor. If both sensors stop responding, it switches into fail-safe mode and lands the quadcopter.
  - Quadcopter transmits live messages to laptop about its behaviour, e.g. when a sensor fails or a 10-second countdown before it takes off.
@@ -33,6 +32,7 @@ catkin_make
 to install pigpio library for PWM interface and build the code in catkin workspace.
 
 ## Usage
+Parameters for flight are set in src/hyper_propelled_cow/launch/parameters/default.yaml <br />
 On a laptop SSH to the RPi and run:
 ```
 sudo pigpiod
@@ -48,7 +48,7 @@ To start the autopilot, in a new terminal run
 rosrun hyper_prolled_cow controller_dynamic
 ```
 This starts 10-second countdown streamed to your terminal and then the drone takes off.
-After it stabilises itself at given altitude, it drops the payload and continues hovering.
+After it stabilises itself at given altitude, it drops the payload and continues hovering. To land, disable the autopilot from your remote and take over manual control.
 
 ## Electronics:
  - Raspberry Pi 3B (RPi)

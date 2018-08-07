@@ -1,4 +1,4 @@
-# Quadcopter with autopilot: propelled_cow
+# Quadcopter autopilot
 
 Quadcopter contains a grabber capable of lifting a payload from the ground. Autonomous mode grabs a payload, then takes off and hovers at 80 cm above the ground. When the quadcopter is in stable flight, it drops its load and continues hovering. Autopilot is written in Python 2.7 with ROS framework.
 

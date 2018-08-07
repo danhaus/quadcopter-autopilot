@@ -1,6 +1,6 @@
 # Quadcopter autopilot
 
-Quadcopter contains a grabber capable of lifting a payload from the ground. Autonomous mode grabs a payload, then takes off and hovers at 80 cm above the ground. When the quadcopter is in stable flight, it drops its load and continues hovering. Autopilot is written in Python 2.7 with ROS framework.
+Autopilot is written in Python 2.7 with ROS framework. Quadcopter contains a grabber capable of lifting a payload from the ground. Autonomous mode grabs a payload, then takes off and hovers at 80 cm above the ground. When the quadcopter is in stable flight, it drops its load and continues hovering.
 
 ![overview](img/overview.jpg?raw=true "wiring diagram")
 ![bottom](img/bottom.jpg?raw=true "wiring diagram")
@@ -18,6 +18,16 @@ Quadcopter contains a grabber capable of lifting a payload from the ground. Auto
  - This algorithm determines consistency of both readings chooses the smoother one.
  - Exponential smoothening is applied and then the distance is published to the PID controller.
  - The sensor fusion is also capable of determining a failure of a sensor. If both sensors stop responding, it switches into fail-safe mode and lands the quadcopter.
+
+## Install
+### Raspberry Pi (RPi)
+On your RPi with Ubuntu / Lubuntu install ROS Kinetic: http://wiki.ros.org/kinetic/Installation/Ubuntu
+Then in terminal run:
+```
+sudo apt-get install pigpio python-pigpio
+```
+to install pigpio library for PWM interface.
+Clone this repo.
 
 ## Electronics:
  - Raspberry Pi 3B (RPi)

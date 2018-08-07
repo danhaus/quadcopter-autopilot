@@ -30,7 +30,7 @@ cd ~/quadcopter-autopilot
 catkin_make
 ```
 to install pigpio library for PWM interface and build the code in catkin workspace. <br />
-Upload src/Arduino code/main/main.ino to your Arduino and connect it with a USB cable to the RPi
+Upload src/Arduino code/main/main.ino to your Arduino and connect it with a USB cable to the RPi.
 
 ## Usage
 Parameters for flight are set in src/hyper_propelled_cow/launch/parameters/default.yaml <br />
